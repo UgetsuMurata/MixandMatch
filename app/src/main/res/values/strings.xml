@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MixandMatch</string>
+    <string name="guest">Guest</string>
+    <string name="button1">Button</string>
+</resources>
