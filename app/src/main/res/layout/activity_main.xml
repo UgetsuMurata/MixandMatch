@@ -62,10 +62,11 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="200dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+
         android:fillViewport="true">
 
         <LinearLayout
@@ -73,50 +74,86 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:text="@string/button1" />
+                app:srcCompat="@drawable/one_one" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:text="@string/button1" />
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/two_one" />
 
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:text="@string/button1" />
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/three_one" />
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:text="@string/button1" />
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/four_one" />
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:text="@string/button1" />
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/five_one" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/six_one" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/seven_one" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/eight_one" />
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/nine_one" />
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/ten_one" />
+
         </LinearLayout>
     </HorizontalScrollView>
 </RelativeLayout>
