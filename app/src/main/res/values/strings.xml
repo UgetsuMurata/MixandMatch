@@ -8,4 +8,8 @@
     <string name="scroll_desc">Scroll</string>
     <string name="input_user">input_user</string>
     <string name="delete">delete</string>
+    <string name="mix_and_match">Mix and Match</string>
+    <string name="easy">Easy</string>
+    <string name="moderate">Moderate</string>
+    <string name="hard">hard</string>
 </resources>
