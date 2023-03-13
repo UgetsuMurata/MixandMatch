@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
     tools:context=".MainActivity">
 
     <ImageView
@@ -15,10 +16,12 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="70dp"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/settings_desc"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         android:onClick="click_settings"
         android:scaleType="fitCenter"
-        android:src="@drawable/settings"
-        tools:ignore="ContentDescription" />
+        android:src="@drawable/settings" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -28,10 +31,12 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/about_desc"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         android:onClick="click_info"
         android:scaleType="fitCenter"
-        android:src="@drawable/info"
-        tools:ignore="ContentDescription"/>
+        android:src="@drawable/info" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -41,10 +46,12 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="10dp"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/leaderboard_desc"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         android:onClick="click_leaderboard"
         android:scaleType="fitCenter"
-        android:src="@drawable/baseline_leaderboard_24"
-        tools:ignore="ContentDescription"/>
+        android:src="@drawable/baseline_leaderboard_24" />
 
     <Button
         android:id="@+id/user_id"
@@ -62,96 +69,117 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="20dp"
-
+        android:layout_marginBottom="200dp"
+        android:scrollbars="none"
+        android:contentDescription="@string/scroll_desc"
         android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:srcCompat="@drawable/one_one" />
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:srcCompat="@drawable/two_one" />
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:srcCompat="@drawable/three_one" />
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:srcCompat="@drawable/four_one" />
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:srcCompat="@drawable/five_one" />
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:srcCompat="@drawable/six_one" />
 
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:srcCompat="@drawable/seven_one" />
 
             <ImageView
                 android:id="@+id/imageView10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:srcCompat="@drawable/eight_one" />
 
             <ImageView
                 android:id="@+id/imageView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:srcCompat="@drawable/nine_one" />
 
             <ImageView
                 android:id="@+id/imageView12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:srcCompat="@drawable/ten_one" />
 
         </LinearLayout>

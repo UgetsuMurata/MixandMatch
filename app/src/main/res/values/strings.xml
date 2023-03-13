@@ -2,4 +2,8 @@
     <string name="app_name">MixandMatch</string>
     <string name="guest">Guest</string>
     <string name="button1">Button</string>
+    <string name="settings_desc">settings</string>
+    <string name="leaderboard_desc">leaderboard</string>
+    <string name="about_desc">About</string>
+    <string name="scroll_desc">Scroll</string>
 </resources>
