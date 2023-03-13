@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/candy_background"
     android:padding="15dp"
     tools:context=".MainActivity">
 
@@ -17,8 +18,8 @@
         android:layout_marginEnd="70dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/settings_desc"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
+        android:minWidth="100dp"
+        android:minHeight="100dp"
         android:onClick="click_settings"
         android:scaleType="fitCenter"
         android:src="@drawable/settings" />
@@ -47,21 +48,49 @@
         android:layout_marginEnd="10dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/leaderboard_desc"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:minHeight="48dp"
         android:onClick="click_leaderboard"
         android:scaleType="fitCenter"
         android:src="@drawable/baseline_leaderboard_24" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="320dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/delete"
+        android:minWidth="100dp"
+        android:minHeight="48dp"
+        android:onClick="click_leaderboard"
+        android:scaleType="fitCenter"
+        android:src="@drawable/delete" />
+
+
+    <ImageView
+        android:id="@+id/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:contentDescription="@string/input_user"
+        android:src="@drawable/username" />
+
     <Button
         android:id="@+id/user_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        android:alpha="0.25"
+        android:background="?android:attr/selectableItemBackground"
         android:color="#66FF0000"
         android:text="@string/guest"
         tools:ignore="RelativeOverlap" />
@@ -75,9 +104,9 @@
         android:layout_marginTop="200dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="200dp"
-        android:scrollbars="none"
         android:contentDescription="@string/scroll_desc"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -88,6 +117,7 @@
                 android:id="@+id/imageView3"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginEnd="20dp"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"

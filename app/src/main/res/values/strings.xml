@@ -6,4 +6,6 @@
     <string name="leaderboard_desc">leaderboard</string>
     <string name="about_desc">About</string>
     <string name="scroll_desc">Scroll</string>
+    <string name="input_user">input_user</string>
+    <string name="delete">delete</string>
 </resources>
