@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/candy_background"
-    android:padding="15dp"
     android:textAlignment="center"
     tools:context=".MainActivity">
 
@@ -15,8 +14,11 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -24,38 +26,25 @@
                 android:id="@+id/icon_delete"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginEnd="5dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/delete"
-                android:onClick="click_leaderboard"
+                android:onClick="click_delete"
                 android:scaleType="fitCenter"
                 android:src="@drawable/delete"
                 tools:ignore="TouchTargetSizeCheck" />
 
-            <Button
-                android:id="@+id/user_id"
-                android:layout_width="150dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="46dp"
-                android:fontFamily="@font/candy"
-                android:text="@string/guest"
-                android:textStyle="bold"
-                tools:ignore="RelativeOverlap" />
 
-            <ImageView
-                android:id="@+id/icon_settings"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:contentDescription="@string/settings_desc"
-                android:onClick="click_settings"
-                android:scaleType="fitCenter"
-                android:src="@drawable/settings"
-                android:visibility="visible"
-                tools:ignore="TouchTargetSizeCheck" />
+            <Spinner
+                android:id="@+id/spinner_label"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content" />
 
             <ImageView
                 android:id="@+id/icon_info"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginStart="10dp"
                 android:contentDescription="@string/about_desc"
                 android:onClick="click_info"
                 android:scaleType="fitCenter"
@@ -67,6 +56,7 @@
                 android:id="@+id/icon_leaderboard"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginStart="10dp"
                 android:contentDescription="@string/leaderboard_desc"
                 android:onClick="click_leaderboard"
                 android:scaleType="fitCenter"
@@ -86,14 +76,15 @@
             android:text="@string/mix_and_match"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="#FFE60B"
+            android:textColor="#00BCD4"
             android:textSize="45sp" />
 
         <HorizontalScrollView
+            android:id="@+id/categories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             android:contentDescription="@string/scroll_desc"
             android:fillViewport="true"
             android:scrollbars="none">
@@ -197,6 +188,7 @@
                     android:id="@+id/imageView12"
                     android:layout_width="300dp"
                     android:layout_height="300dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:cropToPadding="true"
@@ -206,17 +198,56 @@
         </HorizontalScrollView>
 
         <TextView
+            android:id="@+id/modez"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:fontFamily="@font/candy"
+            android:text="@string/modes"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/candy"
+                android:text="@string/time_based"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/candy"
+                android:text="@string/score_based"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+        <TextView
             android:id="@+id/difficulty"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/candy"
-            android:text="DIFFICULTY"
-            android:textAlignment="center"
+            android:text="@string/difficulty"
             android:textSize="20sp" />
 
         <HorizontalScrollView
+            android:id="@+id/difficulties"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="11dp"
             android:layout_marginTop="15dp"
             android:scrollbars="none">
 
