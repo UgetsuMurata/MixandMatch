@@ -247,7 +247,8 @@
             android:text="@string/time_based"
             android:textAlignment="center"
             android:textColor="#0f0f0f"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:checked="true"/>
 
         <RadioButton
             android:id="@+id/score"
