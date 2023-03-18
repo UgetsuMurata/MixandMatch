@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/candy_background2"
     tools:context=".information">
 
     <TextView
@@ -16,7 +17,7 @@
         android:fontFamily="@font/candy"
         android:text="@string/about_the_game"
         android:textAlignment="center"
-        android:textColor="#DC3EA8"
+        android:textColor="#a95632"
         android:textSize="20sp" />
 
     <TextView
@@ -27,22 +28,23 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="0dp"
-        android:fontFamily="@font/candy"
+        android:fontFamily="@font/beans"
         android:text="@string/description_about_us"
         android:textAlignment="center"
         android:textSize="17sp"
         android:textStyle="normal"
+        android:textColor="#ffffff"
         app:lineHeight="20dp" />
 
     <TextView
         android:id="@+id/about_developer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/candy"
         android:text="@string/about_dev"
         android:textAlignment="center"
-        android:textColor="#DC3EA8"
+        android:textColor="#a95632"
         android:textSize="20sp" />
 
     <TextView
@@ -54,10 +56,11 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="0dp"
-        android:fontFamily="@font/candy"
+        android:fontFamily="@font/beans"
         android:textAlignment="center"
         android:textSize="17sp"
         android:textStyle="normal"
+        android:textColor="#ffffff"
         app:lineHeight="20dp"/>
 
 

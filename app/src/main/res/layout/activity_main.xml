@@ -63,56 +63,67 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/candy"
-            android:scaleX="1"
-            android:text="@string/mix_and_match"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#6D4C41"
-            android:textSize="45sp" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/candy"
+        android:scaleX="1"
+        android:text="@string/mix_and_match"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#d5754b"
+        android:textSize="45sp" />
 
-        <HorizontalScrollView
-            android:id="@+id/categories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:contentDescription="@string/scroll_desc"
-            android:fillViewport="true"
-            android:scrollbars="none">
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-43dp"
+        android:fontFamily="@font/candy"
+        android:scaleX="1"
+        android:text="@string/mix_and_match"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"
+        android:textSize="44sp" />
 
+<<<<<<< Updated upstream
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 tools:ignore="VisualLintBounds">
+=======
+    <HorizontalScrollView
+        android:id="@+id/categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/scroll_desc"
+        android:fillViewport="true"
+        android:scrollbars="none">
+>>>>>>> Stashed changes
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:adjustViewBounds="true"
-                    android:cropToPadding="true"
-                    app:srcCompat="@drawable/one_one" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:ignore="VisualLintBounds">
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:cropToPadding="true"
-                    android:textAlignment="center"
-                    app:srcCompat="@drawable/two_one" />
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/one_one" />
 
+<<<<<<< Updated upstream
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="300dp"
@@ -224,22 +235,133 @@
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:checked = "true"/>
-
-            <RadioButton
-                android:id="@+id/score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/candy"
-                android:text="@string/score_based"
+=======
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-        </RadioGroup>
+                app:srcCompat="@drawable/two_one" />
+>>>>>>> Stashed changes
 
-        <TextView
-            android:id="@+id/difficulty"
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/three_one" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/four_one" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/five_one" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/six_one" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/seven_one" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/eight_one" />
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/nine_one" />
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/ten_one" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/modez"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/candy"
+        android:text="@string/modes"
+        android:textColor="#d5754b"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/modez2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="-30dp"
+        android:fontFamily="@font/candy"
+        android:text="@string/modes"
+        android:textColor="#ffffff"
+        android:textSize="30sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/time"
             android:layout_width="wrap_content"
+<<<<<<< Updated upstream
             android:layout_height="match_parent"
             android:layout_marginStart="11dp"
             android:layout_marginTop="10dp"
@@ -255,66 +377,123 @@
             android:layout_marginStart="11dp"
             android:layout_marginTop="15dp"
             android:scrollbars="none">
+=======
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/beans"
+            android:text="@string/time_based"
+            android:textAlignment="center"
+            android:textColor="#0f0f0f"
+            android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                tools:ignore="VisualLintBounds">
+        <RadioButton
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/beans"
+            android:text="@string/score_based"
+            android:textAlignment="center"
+            android:textColor="#0f0f0f"
+            android:textSize="20sp" />
+    </RadioGroup>
+>>>>>>> Stashed changes
 
-                <TextView
-                    android:id="@+id/easy"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/rec_icon"
-                    android:fontFamily="@font/candy"
-                    android:paddingTop="30dp"
-                    android:text="@string/Etiles"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+    <TextView
+        android:id="@+id/difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/candy"
+        android:text="@string/difficulty"
+        android:textColor="#d5754b"
+        android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/moderate"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/rec_icon"
-                    android:fontFamily="@font/candy"
-                    android:paddingTop="30dp"
-                    android:text="@string/Mtiles"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+    <TextView
+        android:id="@+id/difficulty2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="-30dp"
+        android:fontFamily="@font/candy"
+        android:text="@string/difficulty"
+        android:textColor="#ffffff"
+        android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/hard"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/rec_icon"
-                    android:fontFamily="@font/candy"
-                    android:paddingTop="30dp"
-                    android:text="@string/Htiles"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+    <HorizontalScrollView
+        android:id="@+id/difficulties"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scrollbars="none">
 
-                <TextView
-                    android:id="@+id/extra"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/rec_icon"
-                    android:fontFamily="@font/candy"
-                    android:paddingTop="30dp"
-                    android:text="@string/Extiles"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:ignore="VisualLintBounds">
 
+            <TextView
+                android:id="@+id/easy"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rec_icon"
+                android:fontFamily="@font/beans"
+                android:paddingTop="30dp"
+                android:text="@string/Etiles"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+<<<<<<< Updated upstream
             </LinearLayout>
         </HorizontalScrollView>
 
+=======
+            <TextView
+                android:id="@+id/moderate"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rec_icon"
+                android:fontFamily="@font/beans"
+                android:paddingTop="30dp"
+                android:text="@string/Mtiles"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/hard"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rec_icon"
+                android:fontFamily="@font/beans"
+                android:paddingTop="30dp"
+                android:text="@string/Htiles"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/extra"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rec_icon"
+                android:fontFamily="@font/beans"
+                android:paddingTop="30dp"
+                android:text="@string/Extiles"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+>>>>>>> Stashed changes
 </LinearLayout>
