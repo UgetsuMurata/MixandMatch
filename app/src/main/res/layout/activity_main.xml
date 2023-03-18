@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/candy_background"
     android:textAlignment="center"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
         <LinearLayout
@@ -35,7 +35,6 @@
                 android:id="@+id/spinner_label"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/spinner_desc"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <ImageView
@@ -89,7 +88,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 tools:ignore="VisualLintBounds">
 
@@ -209,7 +208,7 @@
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="17dp"
             android:orientation="horizontal">
 
@@ -223,7 +222,8 @@
                 android:text="@string/time_based"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:checked = "true"/>
 
             <RadioButton
                 android:id="@+id/score"
@@ -240,7 +240,7 @@
         <TextView
             android:id="@+id/difficulty"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="11dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/candy"
@@ -251,7 +251,7 @@
         <HorizontalScrollView
             android:id="@+id/difficulties"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="11dp"
             android:layout_marginTop="15dp"
             android:scrollbars="none">
@@ -316,4 +316,5 @@
 
             </LinearLayout>
         </HorizontalScrollView>
+
 </LinearLayout>

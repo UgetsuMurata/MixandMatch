@@ -8,10 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     DBHandler myDB;
+    public String mode = "TIME";
+    public String imageCategory = "CANDIES";
+    public String user = "Guest";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,5 +64,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void modeChoose(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch (view.getId()){
+            case R.id.time:
+                if (checked) mode="TIME";
+                break;
+            case R.id.score:
+                if (checked) mode="SCORE";
+                break;
+            default: break;
+        }
     }
 }
