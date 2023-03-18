@@ -32,6 +32,7 @@
     <string name="Mtiles">MODERATE\n4x2</string>
     <string name="Htiles">HARD\n5x2</string>
     <string name="Extiles">EXTREME\n6x2</string>
+    <string name="spinner_desc">players can add their username</string>
 
     <string-array name="labels_array">
         <item>+ Add User</item>
