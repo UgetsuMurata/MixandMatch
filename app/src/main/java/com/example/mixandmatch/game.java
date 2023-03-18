@@ -20,26 +20,24 @@ public class game extends AppCompatActivity {
 
     //randomize cards
     //3x2 4x2 5x2 6x2
-//    private List<Integer> generateCardPlacement(String difficulty){
-//        Integer[] cards = {1, 1, 2, 2};
-//        if (Objects.equals(difficulty, "easy")){
-//            //3x2
-//            cards.addAll(new Integer[]{3, 3});
-//        } else if (Objects.equals(difficulty, "moderate")) {
-//            //4x2
-//            cards.addAll(new Integer[]{3, 3, 4, 4});
-//            Integer[] cards = {1, 1, 2, 2, 3, 3, 4, 4};
-//        } else if (Objects.equals(difficulty, "difficult")) {
-//            //4x2
-//            Integer[] cards = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
-//        } else {
-//            Integer[] cards = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6};
-//        }
-//        List<Integer> intList = Arrays.asList(cards);
-//        Collections.shuffle(intList);
-//        intList.toArray(cards);
-//        return ;
-//    }
+    private List<Integer> generateCardPlacement(String difficulty){
+        Integer[] cards = {1, 1, 2, 2};
+        if (Objects.equals(difficulty, "easy")){
+            //3x2
+        } else if (Objects.equals(difficulty, "moderate")) {
+            //4x2
+            cards = {1, 1, 2, 2, 3, 3, 4, 4};
+        } else if (Objects.equals(difficulty, "difficult")) {
+            //4x2
+            Integer[] cards = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
+        } else {
+            Integer[] cards = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6};
+        }
+        List<Integer> intList = Arrays.asList(cards);
+        Collections.shuffle(intList);
+        intList.toArray(cards);
+        return ;
+    }
 
 
 }
