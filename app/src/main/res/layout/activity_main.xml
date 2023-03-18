@@ -20,8 +20,8 @@
 
             <ImageView
                 android:id="@+id/icon_delete"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="5dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/delete"
@@ -40,8 +40,8 @@
 
             <ImageView
                 android:id="@+id/icon_info"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/about_desc"
                 android:onClick="click_info"
@@ -52,9 +52,9 @@
 
             <ImageView
                 android:id="@+id/icon_leaderboard"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="10dp"
                 android:contentDescription="@string/leaderboard_desc"
                 android:onClick="click_leaderboard"
                 android:scaleType="fitCenter"
@@ -125,7 +125,7 @@
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:textAlignment="center"
-                app:srcCompat="@drawable/two_one" />
+                app:srcCompat="@drawable/two_one"/>
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -235,14 +235,13 @@
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <RadioButton
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="15dp"
             android:fontFamily="@font/beans"
             android:text="@string/time_based"
             android:textAlignment="center"
@@ -254,7 +253,6 @@
             android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
             android:fontFamily="@font/beans"
             android:text="@string/score_based"
             android:textAlignment="center"
