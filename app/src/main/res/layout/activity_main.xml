@@ -32,13 +32,14 @@
                 android:onClick="click_delete"
                 android:scaleType="fitCenter"
                 android:src="@drawable/delete"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
 
             <Spinner
                 android:id="@+id/spinner_label"
                 android:layout_width="210dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <ImageView
                 android:id="@+id/icon_info"
@@ -50,7 +51,7 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/info"
                 android:visibility="visible"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
             <ImageView
                 android:id="@+id/icon_leaderboard"
@@ -62,7 +63,7 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_leaderboard_24"
                 android:visibility="visible"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
         </LinearLayout>
 
@@ -76,7 +77,7 @@
             android:text="@string/mix_and_match"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="#00BCD4"
+            android:textColor="#6D4C41"
             android:textSize="45sp" />
 
         <HorizontalScrollView
@@ -92,7 +93,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="VisualLintBounds">
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -112,6 +114,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:cropToPadding="true"
+                    android:textAlignment="center"
                     app:srcCompat="@drawable/two_one" />
 
                 <ImageView
@@ -204,11 +207,13 @@
             android:layout_marginStart="11dp"
             android:fontFamily="@font/candy"
             android:text="@string/modes"
+            android:textColor="#000000"
             android:textSize="20sp" />
 
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
             android:orientation="horizontal">
 
             <RadioButton
@@ -220,6 +225,7 @@
                 android:fontFamily="@font/candy"
                 android:text="@string/time_based"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 android:textSize="20sp" />
 
             <RadioButton
@@ -230,6 +236,7 @@
                 android:fontFamily="@font/candy"
                 android:text="@string/score_based"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 android:textSize="20sp" />
         </RadioGroup>
 
@@ -241,6 +248,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/candy"
             android:text="@string/difficulty"
+            android:textColor="#000000"
             android:textSize="20sp" />
 
         <HorizontalScrollView
@@ -254,35 +262,60 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="VisualLintBounds">
 
                 <TextView
                     android:id="@+id/easy"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/rec_icon" />
+                    android:background="@drawable/rec_icon"
+                    android:fontFamily="@font/candy"
+                    android:paddingTop="30dp"
+                    android:text="@string/Etiles"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/moderate"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/rec_icon" />
+                    android:background="@drawable/rec_icon"
+                    android:fontFamily="@font/candy"
+                    android:paddingTop="30dp"
+                    android:text="@string/Mtiles"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/hard"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/rec_icon" />
+                    android:background="@drawable/rec_icon"
+                    android:fontFamily="@font/candy"
+                    android:paddingTop="30dp"
+                    android:text="@string/Htiles"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/extra"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/rec_icon" />
+                    android:background="@drawable/rec_icon"
+                    android:fontFamily="@font/candy"
+                    android:paddingTop="30dp"
+                    android:text="@string/Extiles"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </HorizontalScrollView>

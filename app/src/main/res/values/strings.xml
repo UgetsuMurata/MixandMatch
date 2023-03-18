@@ -28,10 +28,14 @@
     <string name="progress">Progress:</string>
     <string name="game_results">Game Results:</string>
 
+    <string name="Etiles">EASY\n3x2</string>
+    <string name="Mtiles">MODERATE\n4x2</string>
+    <string name="Htiles">HARD\n5x2</string>
+    <string name="Extiles">EXTREME\n6x2</string>
+
     <string-array name="labels_array">
         <item>+ Add User</item>
         <item>Guest</item>
-
     </string-array>
 
 
