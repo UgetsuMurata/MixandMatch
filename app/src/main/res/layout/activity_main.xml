@@ -206,47 +206,47 @@
             android:textColor="#000000"
             android:textSize="20sp" />
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="17dp"
-            android:orientation="horizontal">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="15dp"
-                android:fontFamily="@font/candy"
-                android:text="@string/time_based"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:checked = "true"/>
-
-            <RadioButton
-                android:id="@+id/score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/candy"
-                android:text="@string/score_based"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/difficulty"
+        <RadioButton
+            android:id="@+id/time"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="15dp"
+            android:checked="true"
             android:fontFamily="@font/candy"
-            android:text="@string/difficulty"
+            android:text="@string/time_based"
+            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/candy"
+            android:text="@string/score_based"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/candy"
+        android:text="@string/difficulty"
+        android:textColor="#000000"
+        android:textSize="20sp" />
 
         <HorizontalScrollView
             android:id="@+id/difficulties"
