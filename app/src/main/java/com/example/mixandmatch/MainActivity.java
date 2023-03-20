@@ -8,19 +8,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    DBHandler myDB;
+    DBHandler DB;
     public String mode = "TIME";
+    public static String DIFFICULTY = "easy";
+    public static String USERNAME = "Guest";
     public String imageCategory = "CANDIES";
     public String user = "Guest";
+
+    ImageView img;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myDB = new DBHandler(this);
+        DB = new DBHandler(this);
 
         Spinner spinner = findViewById(R.id.spinner_label);
         if (spinner != null){
@@ -35,6 +42,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (spinner != null){
             spinner.setAdapter(adapter);
         }
+
+        img = (ImageView) findViewById(R.id.icon_delete);
+        img.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openPopUpWindow();
+            }
+        });
+
+    }
+
+    private void openPopUpWindow() {
+        Intent popupwindow = new Intent(MainActivity.this, PopupWindow.class);
+        startActivity(popupwindow);
     }
 
     public void click_info(View view) {
@@ -79,5 +100,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             default: break;
         }
     }
+
+
 
 }

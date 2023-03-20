@@ -2,7 +2,9 @@ package com.example.mixandmatch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,16 +13,22 @@ import java.util.List;
 import java.util.Objects;
 
 public class game extends AppCompatActivity {
+    DBHandler DB = new DBHandler(this);
+    public String username;
+    public String difficulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        Intent intent = getIntent();
+        difficulty = intent.getStringExtra(MainActivity.DIFFICULTY);;
+        username = intent.getStringExtra(MainActivity.USERNAME);
     }
 
     //randomize cards
     //3x2 4x2 5x2 6x2
-    private static List<Integer> generateCardPlacement(String difficulty){
+    private List<Integer> generateCardPlacement(){
         Integer[] cards = {1, 1, 2, 2};
         if (Objects.equals(difficulty, "easy")){
             //3x2
@@ -40,6 +48,17 @@ public class game extends AppCompatActivity {
         return intList;
     }
 
+    private void storeTimeScore(Integer time_taken){
+        //DB.timeLB.insertScore(username, difficulty, time_taken);
+    }
+
+    private void addScore(Integer points){
+        // factors:
+        // how many times flipped for cards as a
+        // took how long since first flipped as b
+        // (b/10)*a = score added
+
+    }
 
 
 }

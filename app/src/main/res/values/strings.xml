@@ -25,7 +25,7 @@
     <string name="header_settings">LEADERBOARD</string>
     <string name="share_results">Share Results</string>
     <string name="back">Back</string>
-    <string name="progress">Progress:</string>
+    <string name="progress">Top 10:</string>
     <string name="game_results">Game Results:</string>
 
     <string name="Etiles">EASY\n3x2</string>
@@ -33,6 +33,10 @@
     <string name="Htiles">HARD\n5x2</string>
     <string name="Extiles">EXTREME\n6x2</string>
     <string name="spinner_desc">players can add their username</string>
+    <string name="display_time">Time</string>
+    <string name="remained_time">00:00</string>
+    <string name="timed">Time:</string>
+    <string name="time_score">00:00</string>
 
     <string-array name="labels_array">
         <item>+ Add User</item>
