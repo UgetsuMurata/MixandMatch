@@ -5,26 +5,114 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".game">
-
+    <!--  SCORE-BASED  -->
+    <!--  HEADER  -->
     <include
-        android:id="@+id/game_header"
+        android:id="@+id/gameHeader_SCORE"
         layout="@layout/activity_game_view"
+        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/game_playField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <!--  GAMEPLAY  -->
     <include
-        android:id="@+id/game_playField"
+        android:id="@+id/SCORE_EASY"
         layout="@layout/easy"
+        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_header" />
+        app:layout_constraintTop_toBottomOf="@+id/gameHeader_SCORE" />
+    <include
+        android:id="@+id/SCORE_MODERATE"
+        layout="@layout/moderate"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameHeader_SCORE" />
+    <include
+        android:id="@+id/SCORE_HARD"
+        layout="@layout/hard"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameHeader_SCORE" />
+    <include
+        android:id="@+id/SCORE_EXTREME"
+        layout="@layout/extreme"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameHeader_SCORE" />
+
+    <!--  TIME-BASED  -->
+    <!--  HEADER  -->
+    <include
+        android:id="@+id/gameHeader_TIME"
+        layout="@layout/activity_time_based_view"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--  GAMEPLAY  -->
+    <include
+        android:id="@+id/TIME_EASY"
+        layout="@layout/easy"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameHeader_TIME" />
+    <include
+        android:id="@+id/TIME_MODERATE"
+        layout="@layout/moderate"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameHeader_TIME" />
+    <include
+        android:id="@+id/TIME_HARD"
+        layout="@layout/hard"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameHeader_TIME" />
+    <include
+        android:id="@+id/TIME_EXTREME"
+        layout="@layout/extreme"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameHeader_TIME" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

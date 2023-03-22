@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             default: break;
         }
-        Intent intent = new Intent(MainActivity.this, GameView.class);
+        Intent intent = new Intent(MainActivity.this, game.class);
         intent.putExtra("DIFFICULTY", DIFFICULTY);
         intent.putExtra("MODE", mode);
         intent.putExtra("USERNAME", USERNAME);

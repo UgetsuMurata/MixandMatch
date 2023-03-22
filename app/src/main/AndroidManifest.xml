@@ -25,10 +25,11 @@
             android:exported="true" />
         <activity
             android:name=".GameView"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".game"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".information"
             android:exported="false" />

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class game extends AppCompatActivity {
-    DBHandler DB = new DBHandler(this);
+    DBHandler DB;
     public String USERNAME;
     public String DIFFICULTY;
     public String MODE;
@@ -25,11 +26,13 @@ public class game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         Intent intent = getIntent();
         DIFFICULTY = intent.getStringExtra("DIFFICULTY");
         MODE = intent.getStringExtra("MODE");
         USERNAME = intent.getStringExtra("USERNAME");
         CATEGORY = intent.getStringExtra("CATEGORY");
+        configureScreen();
         if (MODE.equals("TIME")){
             CARDS = new Hashtable<>();
             CARDS.put(1, 0); //container of card flip data
@@ -47,10 +50,43 @@ public class game extends AppCompatActivity {
         }
     }
 
-    private void setHeader(String Mode){
-        findViewById(R.id.game_header);
-        //TODO:
-        //CHANGE HEADER AND CONTENT OF GAME DEPENDING ON MODE AND DIFFICULTY.
+    private void configureScreen(){
+        View header, content;
+        if (MODE.equals("TIME")){
+            header = findViewById(R.id.gameHeader_TIME);
+            switch (DIFFICULTY){
+                case "MODERATE":
+                    content = findViewById(R.id.TIME_MODERATE);
+                    break;
+                case "HARD":
+                    content = findViewById(R.id.TIME_HARD);
+                    break;
+                case "EXTREME":
+                    content = findViewById(R.id.TIME_EXTREME);
+                    break;
+                default:
+                    content = findViewById(R.id.TIME_EASY);
+                    break;
+            }
+        } else {
+            header = findViewById(R.id.gameHeader_SCORE);
+            switch (DIFFICULTY) {
+                case "MODERATE":
+                    content = findViewById(R.id.SCORE_MODERATE);
+                    break;
+                case "HARD":
+                    content = findViewById(R.id.SCORE_HARD);
+                    break;
+                case "EXTREME":
+                    content = findViewById(R.id.SCORE_EXTREME);
+                    break;
+                default:
+                    content = findViewById(R.id.SCORE_EASY);
+                    break;
+            }
+        }
+        header.setVisibility(View.VISIBLE);
+        content.setVisibility(View.VISIBLE);
     }
 
     //randomize cards
