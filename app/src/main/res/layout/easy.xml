@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".game">
 
     <ImageView
         android:id="@+id/card01"
@@ -13,6 +14,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:onClick="openCard"
         app:layout_constraintBottom_toTopOf="@+id/card03"
         app:layout_constraintEnd_toStartOf="@+id/card02"
         app:layout_constraintStart_toStartOf="parent"
