@@ -46,6 +46,12 @@
     <string name="add_user">Add User</string>
     <string name="username">Username:</string>
     <string name="skyler123">Skyler123</string>
+    <string name="concerns">Concerns</string>
+    <string name="desc_concern">If you have any concerns, please send us a message below!</string>
+    <string name="email">Email:</string>
+    <string name="phoneNumber">Phone Number:</string>
+    <string name="message">Message:</string>
+    <string name="submit_concern">Submit</string>
 
     <string-array name="labels_array">
         <item>Guest</item>

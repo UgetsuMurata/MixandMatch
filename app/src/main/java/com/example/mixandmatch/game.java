@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Objects;
@@ -122,11 +123,37 @@ public class game extends AppCompatActivity {
         }
     }
 
+    ImageView currentImageId;
+    ImageView previousImageId;
+    int currentValue;
+    int previousValue;
+
     private void onClick(ImageView img, int index) {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 img.setImageResource(getImage(index));
+                if(previousImageId == null) {
+                    previousImageId = img;
+                    previousValue = index;
+                } else {
+                    if(currentImageId == null) {
+                        currentImageId = img;
+                        currentValue = index;
+                    } else {
+                        if(previousValue != currentValue) {
+                            previousImageId.setImageResource(R.drawable.blank_tile1);
+                            currentImageId.setImageResource(R.drawable.blank_tile1);
+                        } else {
+                            previousImageId.setOnClickListener(null);
+                            currentImageId.setOnClickListener(null);
+                        }
+                        currentImageId = null;
+                        previousImageId = img;
+                        previousValue = index;
+
+                    }
+                }
             }
         });
     }

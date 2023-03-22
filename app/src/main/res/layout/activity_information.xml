@@ -1,67 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/about"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/candy_background2"
     tools:context=".information">
 
-    <TextView
-        android:id="@+id/about_game"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/candy"
-        android:text="@string/about_the_game"
-        android:textAlignment="center"
-        android:textColor="#a95632"
-        android:textSize="20sp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-    <TextView
-        android:id="@+id/about_desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="0dp"
-        android:fontFamily="@font/beans"
-        android:text="@string/description_about_us"
-        android:textAlignment="center"
-        android:textSize="17sp"
-        android:textStyle="normal"
-        android:textColor="#ffffff"
-        app:lineHeight="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/about_developer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/candy"
-        android:text="@string/about_dev"
-        android:textAlignment="center"
-        android:textColor="#a95632"
-        android:textSize="20sp" />
+            <TextView
+                android:id="@+id/about_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/candy"
+                android:text="@string/about_the_game"
+                android:textAlignment="center"
+                android:textColor="#a95632"
+                android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/dev_desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/desc_dev"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="0dp"
-        android:fontFamily="@font/beans"
-        android:textAlignment="center"
-        android:textSize="17sp"
-        android:textStyle="normal"
-        android:textColor="#ffffff"
-        app:lineHeight="20dp"/>
+            <TextView
+                android:id="@+id/about_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/beans"
+                android:text="@string/description_about_us"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:textStyle="normal"
+                app:lineHeight="20dp" />
+
+            <TextView
+                android:id="@+id/about_developer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/candy"
+                android:text="@string/about_dev"
+                android:textAlignment="center"
+                android:textColor="#a95632"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/dev_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/beans"
+                android:text="@string/desc_dev"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:textStyle="normal"
+                app:lineHeight="20dp" />
+
+            <TextView
+                android:id="@+id/concern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/candy"
+                android:text="@string/concerns"
+                android:textAlignment="center"
+                android:textColor="#a95632"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/concern_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/beans"
+                android:text="@string/desc_concern"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:textStyle="normal"
+                app:lineHeight="20dp" />
 
 
-</LinearLayout>
+            <EditText
+                android:id="@+id/message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/beans"
+                android:hint="@string/message"
+                android:inputType="textMultiLine|textImeMultiLine|textEmailAddress"
+                android:minHeight="48dp"
+                android:textColor="#FDFDFD"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/beans"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColor="#FDFDFD"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/PhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/beans"
+                android:hint="@string/phoneNumber"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                android:textColor="#FDFDFD"
+                android:textSize="20sp" />
+
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/color_bg"
+                android:fontFamily="@font/beans"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/submit_concern"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
