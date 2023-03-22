@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView59"
+        android:id="@+id/extremeCard10"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
@@ -14,13 +14,13 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView60"
+        app:layout_constraintEnd_toStartOf="@+id/extremeCard11"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView25"
+        app:layout_constraintTop_toBottomOf="@+id/extremeCard07"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView60"
+        android:id="@+id/extremeCard11"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
@@ -28,13 +28,13 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView61"
-        app:layout_constraintStart_toEndOf="@+id/imageView59"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14"
+        app:layout_constraintEnd_toStartOf="@+id/extremeCard12"
+        app:layout_constraintStart_toEndOf="@+id/extremeCard10"
+        app:layout_constraintTop_toBottomOf="@+id/extremeCard08"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView61"
+        android:id="@+id/extremeCard12"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
@@ -43,134 +43,134 @@
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView60"
-        app:layout_constraintTop_toBottomOf="@+id/imageView27"
+        app:layout_constraintStart_toEndOf="@+id/extremeCard11"
+        app:layout_constraintTop_toBottomOf="@+id/extremeCard09"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView56"
+        android:id="@+id/extremeCard01"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView53"
-        app:layout_constraintEnd_toStartOf="@+id/imageView57"
+        app:layout_constraintBottom_toTopOf="@+id/extremeCard04"
+        app:layout_constraintEnd_toStartOf="@+id/extremeCard02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView57"
+        android:id="@+id/extremeCard02"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView54"
-        app:layout_constraintEnd_toStartOf="@+id/imageView58"
-        app:layout_constraintStart_toEndOf="@+id/imageView56"
+        app:layout_constraintBottom_toTopOf="@+id/extremeCard05"
+        app:layout_constraintEnd_toStartOf="@+id/extremeCard03"
+        app:layout_constraintStart_toEndOf="@+id/extremeCard01"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView58"
+        android:id="@+id/extremeCard03"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView55"
+        app:layout_constraintBottom_toTopOf="@+id/extremeCard06"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView57"
+        app:layout_constraintStart_toEndOf="@+id/extremeCard02"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView55"
+        android:id="@+id/extremeCard06"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView27"
+        app:layout_constraintBottom_toTopOf="@+id/extremeCard09"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView54"
-        app:layout_constraintTop_toBottomOf="@+id/imageView58"
+        app:layout_constraintStart_toEndOf="@+id/extremeCard05"
+        app:layout_constraintTop_toBottomOf="@+id/extremeCard03"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView53"
+        android:id="@+id/extremeCard04"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView25"
-        app:layout_constraintEnd_toStartOf="@+id/imageView54"
+        app:layout_constraintBottom_toTopOf="@+id/extremeCard07"
+        app:layout_constraintEnd_toStartOf="@+id/extremeCard05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView56"
+        app:layout_constraintTop_toBottomOf="@+id/extremeCard01"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView54"
+        android:id="@+id/extremeCard05"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView14"
-        app:layout_constraintEnd_toStartOf="@+id/imageView55"
-        app:layout_constraintStart_toEndOf="@+id/imageView53"
-        app:layout_constraintTop_toBottomOf="@+id/imageView57"
+        app:layout_constraintBottom_toTopOf="@+id/extremeCard08"
+        app:layout_constraintEnd_toStartOf="@+id/extremeCard06"
+        app:layout_constraintStart_toEndOf="@+id/extremeCard04"
+        app:layout_constraintTop_toBottomOf="@+id/extremeCard02"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/extremeCard08"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView60"
-        app:layout_constraintEnd_toStartOf="@+id/imageView27"
-        app:layout_constraintStart_toEndOf="@+id/imageView25"
-        app:layout_constraintTop_toBottomOf="@+id/imageView54"
+        app:layout_constraintBottom_toTopOf="@+id/extremeCard11"
+        app:layout_constraintEnd_toStartOf="@+id/extremeCard09"
+        app:layout_constraintStart_toEndOf="@+id/extremeCard07"
+        app:layout_constraintTop_toBottomOf="@+id/extremeCard05"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView25"
+        android:id="@+id/extremeCard07"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView59"
-        app:layout_constraintEnd_toStartOf="@+id/imageView14"
+        app:layout_constraintBottom_toTopOf="@+id/extremeCard10"
+        app:layout_constraintEnd_toStartOf="@+id/extremeCard08"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView53"
+        app:layout_constraintTop_toBottomOf="@+id/extremeCard04"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
-        android:id="@+id/imageView27"
+        android:id="@+id/extremeCard09"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView61"
+        app:layout_constraintBottom_toTopOf="@+id/extremeCard12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView14"
-        app:layout_constraintTop_toBottomOf="@+id/imageView55"
+        app:layout_constraintStart_toEndOf="@+id/extremeCard08"
+        app:layout_constraintTop_toBottomOf="@+id/extremeCard06"
         app:srcCompat="@drawable/blank_tile1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

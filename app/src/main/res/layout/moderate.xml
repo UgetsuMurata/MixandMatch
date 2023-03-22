@@ -6,7 +6,105 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView37"
+        android:id="@+id/moderateCard01"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/moderateCard03"
+        app:layout_constraintEnd_toStartOf="@+id/moderateCard02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/blank_tile1" />
+
+    <ImageView
+        android:id="@+id/moderateCard02"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/moderateCard04"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moderateCard01"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/blank_tile1" />
+
+    <ImageView
+        android:id="@+id/moderateCard03"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/moderateCard05"
+        app:layout_constraintEnd_toStartOf="@+id/moderateCard04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moderateCard01"
+        app:srcCompat="@drawable/blank_tile1" />
+
+    <ImageView
+        android:id="@+id/moderateCard04"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/moderateCard06"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moderateCard03"
+        app:layout_constraintTop_toBottomOf="@+id/moderateCard02"
+        app:srcCompat="@drawable/blank_tile1" />
+
+    <ImageView
+        android:id="@+id/moderateCard05"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/moderateCard07"
+        app:layout_constraintEnd_toStartOf="@+id/moderateCard06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moderateCard03"
+        app:srcCompat="@drawable/blank_tile1" />
+
+    <ImageView
+        android:id="@+id/moderateCard06"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/moderateCard08"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moderateCard05"
+        app:layout_constraintTop_toBottomOf="@+id/moderateCard04"
+        app:srcCompat="@drawable/blank_tile1" />
+
+    <ImageView
+        android:id="@+id/moderateCard07"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/moderateCard08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moderateCard05"
+        app:srcCompat="@drawable/blank_tile1" />
+
+    <ImageView
+        android:id="@+id/moderateCard08"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
@@ -15,105 +113,8 @@
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView38"
-        app:layout_constraintTop_toBottomOf="@+id/imageView35"
+        app:layout_constraintStart_toEndOf="@+id/moderateCard07"
+        app:layout_constraintTop_toBottomOf="@+id/moderateCard06"
         app:srcCompat="@drawable/blank_tile1" />
 
-    <ImageView
-        android:id="@+id/imageView38"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView37"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView36"
-        app:srcCompat="@drawable/blank_tile1" />
-
-    <ImageView
-        android:id="@+id/imageView35"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView37"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView36"
-        app:layout_constraintTop_toBottomOf="@+id/imageView33"
-        app:srcCompat="@drawable/blank_tile1" />
-
-    <ImageView
-        android:id="@+id/imageView36"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView38"
-        app:layout_constraintEnd_toStartOf="@+id/imageView35"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView34"
-        app:srcCompat="@drawable/blank_tile1" />
-
-    <ImageView
-        android:id="@+id/imageView33"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView35"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView34"
-        app:layout_constraintTop_toBottomOf="@+id/imageView32"
-        app:srcCompat="@drawable/blank_tile1" />
-
-    <ImageView
-        android:id="@+id/imageView34"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView36"
-        app:layout_constraintEnd_toStartOf="@+id/imageView33"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView31"
-        app:srcCompat="@drawable/blank_tile1" />
-
-    <ImageView
-        android:id="@+id/imageView32"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView33"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView31"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blank_tile1" />
-
-    <ImageView
-        android:id="@+id/imageView31"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView34"
-        app:layout_constraintEnd_toStartOf="@+id/imageView32"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blank_tile1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -21,6 +22,9 @@ public class game extends AppCompatActivity {
     public String MODE;
     public String CATEGORY;
     public Dictionary<Integer, Integer> CARDS = new Hashtable<>();
+    public View HEADER;
+    public View CONTENT;
+    public Integer OPEN_CARDS; //detects how many cards are flipped
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class game extends AppCompatActivity {
         MODE = intent.getStringExtra("MODE");
         USERNAME = intent.getStringExtra("USERNAME");
         CATEGORY = intent.getStringExtra("CATEGORY");
+        OPEN_CARDS = 0;
         configureScreen();
         if (MODE.equals("TIME")){
             CARDS = new Hashtable<>();
@@ -48,6 +53,11 @@ public class game extends AppCompatActivity {
             CARDS.put(11, 0);
             CARDS.put(12, 0);
         }
+    }
+
+    private String stringID(View view){
+        if (view.getId() == View.NO_ID) return "0";
+        else return view.getResources().getResourceName(view.getId());
     }
 
     private void configureScreen(){
@@ -87,6 +97,8 @@ public class game extends AppCompatActivity {
         }
         header.setVisibility(View.VISIBLE);
         content.setVisibility(View.VISIBLE);
+        HEADER = header;
+        CONTENT = content;
         provideCards(content);
     }
 
@@ -98,7 +110,7 @@ public class game extends AppCompatActivity {
             case "EXTREME":
                 break;
             default:
-                Integer[] _id = new Integer[]{R.id.card1, R.id.card2, R.id.card3, R.id.card4, R.id.card5, R.id.card6};
+                Integer[] _id = new Integer[]{R.id.card01, R.id.card02, R.id.card03, R.id.card04, R.id.card05, R.id.card06};
                 if(index.size() != _id.length)
                     break;
                 for (int i=0; i < index.size(); i++) {
@@ -149,10 +161,10 @@ public class game extends AppCompatActivity {
         if (Objects.equals(DIFFICULTY, "EASY")){
             //3x2
             cards = new Integer[]{1, 1, 2, 2, 3, 3};
-        } else if (Objects.equals(DIFFICULTY, "moderate")) {
+        } else if (Objects.equals(DIFFICULTY, "MODERATE")) {
             //4x2
             cards = new Integer[]{1, 1, 2, 2, 3, 3, 4, 4};
-        } else if (Objects.equals(DIFFICULTY, "difficult")) {
+        } else if (Objects.equals(DIFFICULTY, "HARD")) {
             //4x2
             cards = new Integer[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
         } else {
@@ -183,5 +195,6 @@ public class game extends AppCompatActivity {
             //    break;
         }
     }
+
 
 }
