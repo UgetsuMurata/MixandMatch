@@ -1,250 +1,305 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/candy_background"
-    android:textAlignment="center"
     android:orientation="vertical"
+    android:textAlignment="center"
     tools:context=".MainActivity">
 
-        <LinearLayout
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/icon_delete"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="5dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/delete"
-                android:scaleType="fitCenter"
-                android:src="@drawable/delete"
-                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+    <ImageView
+        android:id="@+id/icon_delete"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/delete"
+        android:scaleType="fitCenter"
+        android:src="@drawable/delete"
+        android:onClick="onClickShowAlert"
+        app:layout_constraintBottom_toBottomOf="@id/spinner_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/spinner_label"
+        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
+    <Spinner
+        android:id="@+id/spinner_label"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="@string/spinner_desc"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_info"
+        app:layout_constraintEnd_toStartOf="@id/icon_info"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toEndOf="@id/icon_delete"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
-            <Spinner
-                android:id="@+id/spinner_label"
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/spinner_desc"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <ImageView
-                android:id="@+id/icon_info"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="10dp"
-                android:contentDescription="@string/about_desc"
-                android:onClick="click_info"
-                android:scaleType="fitCenter"
-                android:src="@drawable/info"
-                android:visibility="visible"
-                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
-
-            <ImageView
-                android:id="@+id/icon_leaderboard"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="10dp"
-                android:contentDescription="@string/leaderboard_desc"
-                android:onClick="click_leaderboard"
-                android:scaleType="fitCenter"
-                android:src="@drawable/baseline_leaderboard_24"
-                android:visibility="visible"
-                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
-
-        </LinearLayout>
+    <ImageView
+        android:id="@+id/icon_info"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="@string/about_desc"
+        android:onClick="click_info"
+        android:scaleType="fitCenter"
+        android:src="@drawable/info"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/spinner_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/spinner_label"
+        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/candy"
         android:scaleX="1"
         android:text="@string/mix_and_match"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#d5754b"
-        android:textSize="45sp" />
+        android:textSize="45sp"
+        app:layout_constraintBottom_toTopOf="@id/categories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icon_delete" />
 
     <TextView
         android:id="@+id/title2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-43dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/candy"
         android:scaleX="1"
         android:text="@string/mix_and_match"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#ffffff"
-        android:textSize="44sp" />
+        android:textSize="44sp"
+        app:layout_constraintBottom_toTopOf="@id/category_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icon_delete" />
+
+    <TextView
+        android:id="@+id/category_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/beans"
+        android:text="@string/image_category"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/categories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <HorizontalScrollView
         android:id="@+id/categories"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/scroll_desc"
         android:fillViewport="true"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/modez"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/category_label">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             tools:ignore="VisualLintBounds">
+
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:id="@+id/imageCategoryCandy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="20dp"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:onClick="changeImageCategory"
                 app:srcCompat="@drawable/one_one" />
 
             <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:id="@+id/imageCategoryCubes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:onClick="changeImageCategory"
                 android:textAlignment="center"
-                app:srcCompat="@drawable/two_one"/>
+                app:srcCompat="@drawable/two_one" />
 
             <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:id="@+id/imageCategoryDonut"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:onClick="changeImageCategory"
                 app:srcCompat="@drawable/three_one" />
 
             <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:id="@+id/imageCategoryCookie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:onClick="changeImageCategory"
                 app:srcCompat="@drawable/four_one" />
 
             <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:id="@+id/imageCategoryCane"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:onClick="changeImageCategory"
                 app:srcCompat="@drawable/five_one" />
 
             <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:id="@+id/imageCategoryWiggles"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:onClick="changeImageCategory"
                 app:srcCompat="@drawable/six_one" />
 
             <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:id="@+id/imageCategoryGummy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:onClick="changeImageCategory"
                 app:srcCompat="@drawable/seven_one" />
 
             <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:id="@+id/imageCategoryIceCream"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:onClick="changeImageCategory"
                 app:srcCompat="@drawable/eight_one" />
 
             <ImageView
-                android:id="@+id/imageView11"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:id="@+id/imageCategoryBeans"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:onClick="changeImageCategory"
                 app:srcCompat="@drawable/nine_one" />
 
             <ImageView
-                android:id="@+id/imageView12"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:id="@+id/imageCategoryPopsicle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:onClick="changeImageCategory"
                 app:srcCompat="@drawable/ten_one" />
         </LinearLayout>
     </HorizontalScrollView>
 
     <TextView
         android:id="@+id/modez"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/candy"
         android:text="@string/modes"
         android:textColor="#d5754b"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/scoring_radio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categories" />
 
     <TextView
         android:id="@+id/modez2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="-30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/candy"
         android:text="@string/modes"
         android:textColor="#ffffff"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/scoring_radio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categories" />
 
     <RadioGroup
-        android:layout_width="match_parent"
+        android:id="@+id/scoring_radio"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:gravity="center">
+        app:layout_constraintBottom_toTopOf="@id/difficulty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/modez2">
 
         <RadioButton
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:fontFamily="@font/beans"
+            android:onClick="modeChoose"
             android:text="@string/time_based"
             android:textAlignment="center"
             android:textColor="#0f0f0f"
             android:textSize="20sp"
-            android:checked="true"/>
+            tools:ignore="TouchTargetSizeCheck" />
 
         <RadioButton
             android:id="@+id/score"
@@ -254,37 +309,53 @@
             android:text="@string/score_based"
             android:textAlignment="center"
             android:textColor="#0f0f0f"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:onClick="modeChoose"/>
     </RadioGroup>
 
     <TextView
         android:id="@+id/difficulty"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/candy"
         android:text="@string/difficulty"
         android:textColor="#d5754b"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/difficulties"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoring_radio" />
 
     <TextView
         android:id="@+id/difficulty2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="-30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/candy"
         android:text="@string/difficulty"
         android:textColor="#ffffff"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/difficulties"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoring_radio" />
 
     <HorizontalScrollView
         android:id="@+id/difficulties"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:scrollbars="none">
+        android:layout_marginBottom="32dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -304,7 +375,8 @@
                 android:text="@string/Etiles"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="chooseDifficulty"/>
 
             <TextView
                 android:id="@+id/moderate"
@@ -317,7 +389,8 @@
                 android:text="@string/Mtiles"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="chooseDifficulty"/>
 
             <TextView
                 android:id="@+id/hard"
@@ -330,10 +403,11 @@
                 android:text="@string/Htiles"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="chooseDifficulty"/>
 
             <TextView
-                android:id="@+id/extra"
+                android:id="@+id/extreme"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="10dp"
@@ -343,8 +417,25 @@
                 android:text="@string/Extiles"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="chooseDifficulty"/>
 
         </LinearLayout>
     </HorizontalScrollView>
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/category_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/beans"
+        android:text="Candy"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/category_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/category_label"
+        app:layout_constraintTop_toTopOf="@+id/category_label" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

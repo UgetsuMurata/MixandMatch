@@ -10,11 +10,10 @@
         android:id="@+id/time_based"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
         android:fontFamily="@font/beans"
         android:text="@string/display_time"
         android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,19 +52,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/beans"
-        android:text="@string/remained_time"
+        android:text="@string/accumulated_score"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-
-    <include
-        layout="@layout/extreme"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/score_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
