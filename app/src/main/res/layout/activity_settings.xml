@@ -66,15 +66,25 @@
             android:id="@+id/share_results"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/color_bg"
             android:fontFamily="@font/beans"
-            android:text="@string/share_results" />
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/share_results"
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/color_bg"
             android:fontFamily="@font/beans"
-            android:text="@string/back" />
+            android:paddingStart="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/back"
+            android:textSize="15sp" />
     </LinearLayout>
 
 

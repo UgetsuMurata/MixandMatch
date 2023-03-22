@@ -3,7 +3,9 @@ package com.example.mixandmatch;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.AnimatorInflater;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -196,6 +198,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("CATEGORY", imageCategory);
         setResult(RESULT_OK, intent);
         startActivity(intent);
-
     }
 }

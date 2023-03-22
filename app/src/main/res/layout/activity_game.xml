@@ -19,16 +19,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <!--  GAMEPLAY  -->
+
+
     <include
         android:id="@+id/SCORE_EASY"
         layout="@layout/easy"
-        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameHeader_SCORE" />
+
     <include
         android:id="@+id/SCORE_MODERATE"
         layout="@layout/moderate"

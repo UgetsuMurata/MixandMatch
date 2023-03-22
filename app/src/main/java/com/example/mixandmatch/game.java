@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -87,13 +87,66 @@ public class game extends AppCompatActivity {
         }
         header.setVisibility(View.VISIBLE);
         content.setVisibility(View.VISIBLE);
+        provideCards(content);
+    }
+
+    private void provideCards(View content){
+        List<Integer> index = generateCardPlacement();
+        switch (DIFFICULTY) {
+            case "MODERATE":
+            case "HARD":
+            case "EXTREME":
+                break;
+            default:
+                Integer[] _id = new Integer[]{R.id.card1, R.id.card2, R.id.card3, R.id.card4, R.id.card5, R.id.card6};
+                if(index.size() != _id.length)
+                    break;
+                for (int i=0; i < index.size(); i++) {
+                    int a = i;
+                    ImageView img = content.findViewById(_id[i]);
+                    onClick(img, index.get(a));
+                }
+                break;
+        }
+    }
+
+    private void onClick(ImageView img, int index) {
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                img.setImageResource(getImage(index));
+            }
+        });
+    }
+
+    private int getImage(int i) {
+        switch (CATEGORY) {
+            case "CANDY":
+                if (i == 1)
+                    return R.drawable.one_one;
+                if (i == 2)
+                    return R.drawable.one_two;
+                if (i == 3)
+                    return R.drawable.one_three;
+                if (i == 4)
+                    return R.drawable.one_four;
+                if (i == 5)
+                    return R.drawable.one_five;
+                if (i == 6)
+                    return R.drawable.one_six;
+                break;
+            case "CUBE":
+            default:
+                break;
+        }
+        return 0;
     }
 
     //randomize cards
     //3x2 4x2 5x2 6x2
     private List<Integer> generateCardPlacement(){
         Integer[] cards = {1, 1, 2, 2};
-        if (Objects.equals(DIFFICULTY, "easy")){
+        if (Objects.equals(DIFFICULTY, "EASY")){
             //3x2
             cards = new Integer[]{1, 1, 2, 2, 3, 3};
         } else if (Objects.equals(DIFFICULTY, "moderate")) {
@@ -130,6 +183,5 @@ public class game extends AppCompatActivity {
             //    break;
         }
     }
-
 
 }

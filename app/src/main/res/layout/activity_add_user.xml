@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:fontFamily="@font/beans"
-        android:text="Add User"
+        android:text="@string/add_user"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/beans"
-        android:text="Username:"
+        android:text="@string/username"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/username"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/add_user_label" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/user_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -59,8 +59,9 @@
         android:layout_marginEnd="20dp"
         android:ems="10"
         android:fontFamily="@font/beans"
-        android:hint="Skyler123"
+        android:hint="@string/skyler123"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         android:textColor="#C8C8C8"
         android:textColorHint="#C87B67"
         android:textSize="30sp"
@@ -73,8 +74,8 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="#D89191"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/color_bg"
         android:fontFamily="@font/beans"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -82,8 +83,18 @@
         android:paddingBottom="10dp"
         android:text="Submit"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/close_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
