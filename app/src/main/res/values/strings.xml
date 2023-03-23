@@ -52,6 +52,7 @@
     <string name="phoneNumber">Phone Number:</string>
     <string name="message">Message:</string>
     <string name="submit_concern">Submit</string>
+    <string name="submit_button">Submit</string>
 
     <string-array name="labels_array">
         <item>Guest</item>
