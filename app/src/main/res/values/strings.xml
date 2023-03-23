@@ -28,10 +28,10 @@
     <string name="progress">Top 10:</string>
     <string name="game_results">Game Results:</string>
 
-    <string name="Etiles">EASY\n3x2</string>
-    <string name="Mtiles">MODERATE\n4x2</string>
-    <string name="Htiles">HARD\n5x2</string>
-    <string name="Extiles">EXTREME\n6x2</string>
+    <string name="Etiles">EASY\n(3 pairs)</string>
+    <string name="Mtiles">MODERATE\n(4 pairs)</string>
+    <string name="Htiles">HARD\n(5 pairs)</string>
+    <string name="Extiles">EXTREME\n(6 pairs)</string>
     <string name="spinner_desc">players can add their username</string>
     <string name="display_time">Time</string>
     <string name="accumulated_score">0 pts</string>

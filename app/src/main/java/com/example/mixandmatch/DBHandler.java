@@ -70,19 +70,32 @@ public class DBHandler extends SQLiteOpenHelper {
         return usernames;
     }
 
-    public String getLoggedIn(){
+    public String getLoggedIn() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT username FROM "+USER+" WHERE logged_in=1;", null);
-        String results = cursor.getString(0);
+        Cursor cursor = db.rawQuery("SELECT username FROM " + USER + " WHERE logged_in=1;", null);
+        String results;
+        if (cursor.moveToFirst() && cursor.getCount() >= 1) {
+            do {
+                results = cursor.getString(0);
+            } while (cursor.moveToNext()) ;
+        } else {
+            results = "Guest";
+        }
         cursor.close();
         return results;
     }
     public void changeUser(String username){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("UPDATE "+USER+" SET logged_in=0 WHERE logged_in=1;", null);
-        cursor.close();
-        cursor = db.rawQuery("UPDATE "+USER+" SET logged_in=1 WHERE username='"+username+"';", null);
-        cursor.close();
+        logOutUser();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("logged_in", 1);
+        db.update(USER, contentValues, "username=?", new String[]{username});
+    }
+    public void logOutUser(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("logged_in", 0);
+        db.update(USER, contentValues, "logged_in=1", null);
     }
     public void deleteUser(String username){
         SQLiteDatabase db = this.getWritableDatabase();

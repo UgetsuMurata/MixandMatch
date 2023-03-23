@@ -411,7 +411,7 @@
         android:fontFamily="@font/beans"
         android:text="Candy"
         android:textColor="#e33e59"
-        android:textSize="27sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/category_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

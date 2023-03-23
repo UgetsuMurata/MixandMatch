@@ -5,15 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     DBHandler DB;
@@ -21,8 +22,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public static String DIFFICULTY = "EASY";
     public static String USERNAME = "Guest";
     public String imageCategory = "CANDY";
-
-    String current_user;
+    private Spinner spinner;
+    private ArrayAdapter arrayAdapter;
+    private ImageView delete_icon;
     List<String> labels;
 
     @Override
@@ -31,39 +33,39 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         DB = new DBHandler(this);
 
-        Spinner spinner = findViewById(R.id.spinner_label);
+        delete_icon = findViewById(R.id.icon_delete);
 
-
+        spinner = findViewById(R.id.spinner_label);
         spinner.setOnItemSelectedListener(this);
 
+        USERNAME = DB.getLoggedIn();
         labels = DB.getAllUser();
         labels.add("Guest");
         labels.add("+ Add User");
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, labels);
+        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, labels);
 
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spinner.setAdapter(arrayAdapter);
+        spinner.setSelection(arrayAdapter.getPosition(USERNAME));
     }
 
     public void onClickShowAlert(View view) {
-        AlertDialog.Builder myAlertBuilder = new
-                AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
         myAlertBuilder.setTitle(R.string.alert_title);
         myAlertBuilder.setMessage(R.string.alert_message);
         myAlertBuilder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Pressed OK", Toast.LENGTH_SHORT).show();
-
-                DB.deleteUser(current_user);
+                Toast.makeText(getApplicationContext(), "Deleting user...", Toast.LENGTH_SHORT).show();
+                DB.deleteUser(USERNAME);
+                Toast.makeText(getApplicationContext(), "Deleted!", Toast.LENGTH_SHORT).show();
             }
         });
         myAlertBuilder.setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Pressed Cancel", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Deletion cancelled.", Toast.LENGTH_SHORT).show();
             }
         });
         myAlertBuilder.show();
@@ -76,23 +78,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
         String spinnerLabel = parent.getItemAtPosition(position).toString();
-        displayToast(spinnerLabel);
-        current_user = spinnerLabel;
+        if (spinnerLabel.equals("+ Add User")){
+            Intent intent = new Intent(MainActivity.this, add_user.class);
+            spinner.setSelection(arrayAdapter.getPosition(USERNAME));
+            startActivity(intent);
 
+        } else if (spinnerLabel.equals("Guest")){
+            delete_icon.setVisibility(View.INVISIBLE);
+            displayToast("Welcome!");
+            DB.logOutUser();
+            USERNAME = spinnerLabel;
+        } else {
+            delete_icon.setVisibility(View.VISIBLE);
+            displayToast("Welcome "+spinnerLabel+"!");
+            USERNAME = spinnerLabel;
+            DB.changeUser(USERNAME);
+        }
     }
 
     private void displayToast(String message) {
-
-        if (Objects.equals(message, "+ Add User")){
-
-            Intent intent = new Intent(MainActivity.this, add_user.class);
-            startActivity(intent);
-        }else{
-            Toast.makeText(getApplicationContext(), message,
-                    Toast.LENGTH_SHORT).show();
-        }
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
