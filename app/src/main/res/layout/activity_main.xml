@@ -9,7 +9,6 @@
     android:textAlignment="center"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:id="@+id/icon_delete"
         android:layout_width="35dp"
@@ -237,7 +236,7 @@
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:onClick="changeImageCategory"
-                app:srcCompat="@drawable/ten_one" />
+                app:srcCompat="@drawable/ten_one"/>
         </LinearLayout>
     </HorizontalScrollView>
 

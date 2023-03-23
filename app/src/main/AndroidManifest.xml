@@ -34,7 +34,7 @@
             android:name=".information"
             android:exported="false" />
         <activity
-            android:name=".settings"
+            android:name=".leaderboard"
             android:exported="true"
             android:label="settings"
             android:parentActivityName=".MainActivity">

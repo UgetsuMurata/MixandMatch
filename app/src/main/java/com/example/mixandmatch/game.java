@@ -4,15 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Dictionary;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Objects;
@@ -23,10 +23,19 @@ public class game extends AppCompatActivity {
     public String DIFFICULTY;
     public String MODE;
     public String CATEGORY;
-    public Dictionary<Integer, Integer> CARDS = new Hashtable<>();
+    public Dictionary<Integer, Integer> CARDS;
     public View HEADER;
     public View CONTENT;
-    public ArrayList<View> OPEN_CARDS;
+    public Integer OPENED_CARD;
+    public List<Integer> CARD_PLACEMENT;
+    public List<Integer> OPENED_CARDS;
+    public ImageView previousCard;
+    public Integer SCORE;
+    public TextView scoreDisplay;
+    ImageView currentImageId;
+    ImageView previousImageId;
+    int currentValue;
+    int previousValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +47,16 @@ public class game extends AppCompatActivity {
         MODE = intent.getStringExtra("MODE");
         USERNAME = intent.getStringExtra("USERNAME");
         CATEGORY = intent.getStringExtra("CATEGORY");
-        OPEN_CARDS = new ArrayList<View>();
+        OPENED_CARD = -1;
+        OPENED_CARDS = new ArrayList<>();
+        SCORE = 0;
+        previousCard = null;
+        CARD_PLACEMENT = generateCardPlacement();
         configureScreen();
-        if (MODE.equals("TIME")){
+        if (MODE.equals("SCORE")){
             CARDS = new Hashtable<>();
-            CARDS.put(1, 0); //container of card flip data
-            CARDS.put(2, 0); //card number, card flip amount
+            CARDS.put(1, 0);
+            CARDS.put(2, 0);
             CARDS.put(3, 0);
             CARDS.put(4, 0);
             CARDS.put(5, 0);
@@ -54,6 +67,7 @@ public class game extends AppCompatActivity {
             CARDS.put(10, 0);
             CARDS.put(11, 0);
             CARDS.put(12, 0);
+            scoreDisplay = HEADER.findViewById(R.id.score_view);
         }
     }
 
@@ -105,19 +119,18 @@ public class game extends AppCompatActivity {
     }
 
     private void provideCards(View content){
-        List<Integer> index = generateCardPlacement();
         Integer[] _id;
         switch (DIFFICULTY) {
             case "MODERATE":
                 _id = new Integer[]{R.id.moderateCard01, R.id.moderateCard02,
                         R.id.moderateCard03, R.id.moderateCard04, R.id.moderateCard05,
                         R.id.moderateCard06, R.id.moderateCard07, R.id.moderateCard08};
-                if(index.size() != _id.length)
+                if(CARD_PLACEMENT.size() != _id.length)
                     break;
-                for (int i=0; i < index.size(); i++) {
+                for (int i=0; i < CARD_PLACEMENT.size(); i++) {
                     int a = i;
                     ImageView img = content.findViewById(_id[i]);
-                    onClick(img, index.get(a));
+                    onClick(img, CARD_PLACEMENT.get(a));
                 }
                 break;
             case "HARD":
@@ -125,11 +138,11 @@ public class game extends AppCompatActivity {
                         R.id.hardCard03, R.id.hardCard04, R.id.hardCard05,
                         R.id.hardCard06, R.id.hardCard07, R.id.hardCard08,
                         R.id.hardCard09, R.id.hardCard10};
-                if(index.size() != _id.length) break;
-                for (int i=0; i < index.size(); i++) {
+                if(CARD_PLACEMENT.size() != _id.length) break;
+                for (int i=0; i < CARD_PLACEMENT.size(); i++) {
                     int a = i;
                     ImageView img = content.findViewById(_id[i]);
-                    onClick(img, index.get(a));
+                    onClick(img, CARD_PLACEMENT.get(a));
                 }
                 break;
             case "EXTREME":
@@ -137,37 +150,88 @@ public class game extends AppCompatActivity {
                         R.id.extremeCard04, R.id.extremeCard05, R.id.extremeCard06,
                         R.id.extremeCard07, R.id.extremeCard08, R.id.extremeCard09,
                         R.id.extremeCard10, R.id.extremeCard11, R.id.extremeCard12};
-                if(index.size() != _id.length)
+                if(CARD_PLACEMENT.size() != _id.length)
                     break;
-                for (int i=0; i < index.size(); i++) {
+                for (int i=0; i < CARD_PLACEMENT.size(); i++) {
                     int a = i;
                     ImageView img = content.findViewById(_id[i]);
-                    onClick(img, index.get(a));
+                    onClick(img, CARD_PLACEMENT.get(a));
                 }
                 break;
             default:
                 _id = new Integer[]{R.id.card01, R.id.card02, R.id.card03,
                         R.id.card04, R.id.card05, R.id.card06};
-                if(index.size() != _id.length) break;
-                for (int i=0; i < index.size(); i++) {
+                if(CARD_PLACEMENT.size() != _id.length) break;
+                for (int i=0; i < CARD_PLACEMENT.size(); i++) {
                     int a = i;
                     ImageView img = content.findViewById(_id[i]);
-                    onClick(img, index.get(a));
+                    onClick(img, CARD_PLACEMENT.get(a));
                 }
                 break;
         }
     }
-
-    ImageView currentImageId;
-    ImageView previousImageId;
-    int currentValue;
-    int previousValue;
 
     private void onClick(ImageView img, int index) {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 img.setImageResource(getImage(index));
+                String stringID = stringID(img);
+                Integer idNum = Integer.parseInt(stringID.substring(stringID.length()-2));
+
+                if (OPENED_CARD.equals(idNum) || OPENED_CARDS.contains(idNum)) return;
+                if (OPENED_CARD == -1) {
+                    OPENED_CARD = idNum;
+                    previousCard = img;
+                } else {
+                    if (CARD_PLACEMENT.get(idNum-1).equals(CARD_PLACEMENT.get(OPENED_CARD-1))){
+                        if (MODE.equals("SCORE")){
+                            //get how many times the card is opened
+                            Integer times1 = CARDS.get(OPENED_CARD);
+                            Integer times2 = CARDS.get(idNum);
+                            times1 = 7 - times1;
+                            times2 = 7 - times2;
+                            //calculate equivalent score
+                            Integer score;
+                            if (times1<1) score = times2;
+                            else if (times2<1) score = times1;
+                            else if (times1<1 && times2<1) score = 1;
+                            else score = times1 * times2;
+                            SCORE = SCORE + score;
+                            scoreDisplay.setText(String.valueOf(SCORE));
+                        } //do nothing specific if time-based
+                        OPENED_CARDS.add(OPENED_CARD);
+                        OPENED_CARDS.add(idNum);
+                        //detect if all cards are open
+                        switch (DIFFICULTY){
+                            case "MODERATE":
+                                if (OPENED_CARDS.size() == 6) finishGame();//call finish game
+                                break;
+                            case "HARD":
+                                if (OPENED_CARDS.size() == 8) finishGame();//call finish game
+                                break;
+                            case "EXTREME":
+                                if (OPENED_CARDS.size() == 10) finishGame();//call finish game
+                                break;
+                            default:
+                                if (OPENED_CARDS.size() == 12) finishGame();//call finish game
+                                break;
+                        }
+                    } else {
+                        //close cards
+                        final Handler handler = new Handler();
+                        handler.postDelayed((Runnable) () -> {
+                            img.setImageResource(R.drawable.blank_tile1);
+                            previousCard.setImageResource(R.drawable.blank_tile1);
+                        }, 500);
+                        //if score-based, add 1 to opened cards
+                        if (MODE.equals("SCORE") && CARDS.get(idNum) <= 7) {
+                            CARDS.put(idNum, CARDS.get(idNum)+1);
+                            CARDS.put(OPENED_CARD, CARDS.get(OPENED_CARD)+1);
+                        }
+                    }
+                    OPENED_CARD = -1;
+                }
             }
         });
     }
@@ -327,6 +391,25 @@ public class game extends AppCompatActivity {
                 break;
         }
         return 0;
+    }
+
+    private void finishGame(){
+        //finish game - store results to database
+        Intent intent = new Intent(game.this, leaderboard.class);
+
+        if (MODE.equals("TIME")){
+            DBHandler.timeLB time = DB.new timeLB();
+            time.insertScore(USERNAME, DIFFICULTY, SCORE);
+            //intent.putExtra("DATABASE");
+        } else {
+            DBHandler.scoreLB score = DB.new scoreLB();
+            score.insertScore(USERNAME, DIFFICULTY, SCORE);
+        }
+        //send intents
+        intent.putExtra("SCORE", SCORE);
+        intent.putExtra("USERNAME", USERNAME);
+        setResult(RESULT_OK, intent);
+        startActivity(intent);
     }
 
     //randomize cards
