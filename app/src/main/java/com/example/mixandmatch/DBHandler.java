@@ -1,5 +1,6 @@
 package com.example.mixandmatch;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -35,8 +36,8 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS user (username TEXT UNIQUE NOT NULL, logged_in INT);");
-        db.execSQL("CREATE TABLE IF NOT EXISTS time_based_leaderboard (username TEXT, score_easy INT, score_moderate INT, score_difficult INT, score_extreme INT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS score_based_leaderboard (username TEXT, score_easy INT, score_moderate INT, score_difficult INT, score_extreme INT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS time_based_leaderboard (username TEXT, score_easy INT, score_moderate INT, score_hard INT, score_extreme INT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS score_based_leaderboard (username TEXT, score_easy INT, score_moderate INT, score_hard INT, score_extreme INT)");
     }
 
     @Override
@@ -99,12 +100,9 @@ public class DBHandler extends SQLiteOpenHelper {
     }
     public void deleteUser(String username){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("DELETE FROM "+USER+" WHERE username='"+username+"';", null);
-        cursor.close();
-        cursor = db.rawQuery("DELETE FROM "+TIME+" WHERE username='"+username+"';", null);
-        cursor.close();
-        cursor = db.rawQuery("DELETE FROM "+SCORE+" WHERE username='"+username+"';", null);
-        cursor.close();
+        db.delete(USER, "username=?", new String[]{username});
+        db.delete(TIME, "username=?", new String[]{username});
+        db.delete(SCORE, "username=?", new String[]{username});
     }
 
     //ABSTRACT CLASS FOR TIME AND SCORE
@@ -149,11 +147,14 @@ public class DBHandler extends SQLiteOpenHelper {
             return arrayList;
         }
 
+        @SuppressLint("Range")
         @Override
         public Integer userScore(String user, String difficulty) {
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT score_"+difficulty+" FROM "+SCORE+" WHERE username='"+user+"';", null);
-            return cursor.getInt(0);
+            Cursor cursor = db.rawQuery("SELECT score_"+difficulty+" FROM "+TIME+" WHERE username='"+user+"';", null);
+            cursor.moveToFirst();
+            if ((cursor != null) && (cursor.getCount() > 0)) return cursor.getInt(0);
+            return 999;
         }
     }
     //SCORE DATABASE FUNCTIONS
@@ -195,7 +196,9 @@ public class DBHandler extends SQLiteOpenHelper {
         public Integer userScore(String user, String difficulty) {
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
             Cursor cursor = db.rawQuery("SELECT score_"+difficulty+" FROM "+SCORE+" WHERE username='"+user+"';", null);
-            return cursor.getInt(0);
+            cursor.moveToFirst();
+            if ((cursor != null) && (cursor.getCount() > 0)) return cursor.getInt(0);
+            return 0;
         }
     }
 

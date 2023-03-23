@@ -58,16 +58,17 @@ public class leaderboard extends AppCompatActivity {
             else scores = scores + ConvertSeconds(top10.get(i).get(1)) + "\n";
         }
 
-        ResultsUsername.setText(ConvertSeconds(SCORE));
-        ResultsScore.setText(USERNAME);
+        if (mode.equals("SCORE")) ResultsScore.setText(SCORE);
+        else ResultsScore.setText(ConvertSeconds(SCORE));
+        ResultsUsername.setText(USERNAME);
         if (usernames.equals("")){
             findViewById(R.id.noRecords).setVisibility(View.VISIBLE);
         }
         Top10Usernames.setText(usernames);
         Top10Scores.setText(scores);
 
-        share_results = usernames + ":" + scores + "Type: " + difficulty;
-
+        if (mode.equals("SCORE")) share_results = "I achieved a score of "+ SCORE +" at "+difficulty.toLowerCase()+" difficulty in the game Mix And Match!";
+        else share_results = "I achieved a time of "+ ConvertSeconds(SCORE) +" at "+difficulty.toLowerCase()+" difficulty in the game Mix And Match!";
     }
 
     private String ConvertSeconds(String secondString){

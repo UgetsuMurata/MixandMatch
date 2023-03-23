@@ -60,6 +60,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(getApplicationContext(), "Deleting user...", Toast.LENGTH_SHORT).show();
                 DB.deleteUser(USERNAME);
+
+                arrayAdapter.remove(USERNAME);
+                spinner.setAdapter(arrayAdapter);
+                USERNAME = "Guest";
+                spinner.setSelection(arrayAdapter.getPosition(USERNAME));
+
                 Toast.makeText(getApplicationContext(), "Deleted!", Toast.LENGTH_SHORT).show();
             }
         });

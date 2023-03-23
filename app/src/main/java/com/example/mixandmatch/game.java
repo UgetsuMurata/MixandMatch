@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import java.util.Objects;
 
 public class game extends AppCompatActivity {
     DBHandler DB;
+    private ProgressBar progress;
     public String USERNAME;
     public String DIFFICULTY;
     public String MODE;
@@ -80,6 +82,7 @@ public class game extends AppCompatActivity {
             CARDS.put(12, 0);
             scoreDisplay = HEADER.findViewById(R.id.score_view);
             remainingTime = HEADER.findViewById(R.id.remaining_time);
+            progress = HEADER.findViewById(R.id.progressBar);
             isStopwatch = false;
             configureCountdown(); //run timer
             timerRunning = true;
@@ -428,12 +431,14 @@ public class game extends AppCompatActivity {
         if (!USERNAME.equals("Guest")) { //if using an account, add to database
             if (MODE.equals("TIME")) {
                 DBHandler.timeLB time = DB.new timeLB();
-                if (time.userScore(USERNAME, DIFFICULTY.toLowerCase())<SCORE){
+                Log.d("DATABASE", SCORE+":"+time.userScore(USERNAME, DIFFICULTY.toLowerCase()));
+                if (time.userScore(USERNAME, DIFFICULTY.toLowerCase()) > SCORE){
                     time.insertScore(USERNAME, DIFFICULTY.toLowerCase(), SCORE);
                 }
             } else {
                 DBHandler.scoreLB score = DB.new scoreLB();
-                if (score.userScore(USERNAME, DIFFICULTY.toLowerCase())<SCORE){
+                if (score.userScore(USERNAME, DIFFICULTY.toLowerCase()) < SCORE){
+                    Log.d("DATABASE", SCORE+":"+score.userScore(USERNAME, DIFFICULTY.toLowerCase()));
                     score.insertScore(USERNAME, DIFFICULTY.toLowerCase(), SCORE);
                     Boolean timer_done = msUntilFinished == 0;
                     intent.putExtra("TIMER_DONE", timer_done);
@@ -495,11 +500,12 @@ public class game extends AppCompatActivity {
     public void configureCountdown(){
         Long time;
         switch (DIFFICULTY){
-            case "MODERATE": time = (30*1000L*2);
-            case "HARD": time = (30*1000L*3);
-            case "EXTREME": time = (30*1000L*4);
-            default:time = (30*1000L);
+            case "MODERATE": time = (15*1000L*2);
+            case "HARD": time = (15*1000L*4);
+            case "EXTREME": time = (15*1000L*6);
+            default:time = (15*1000L);
         }
+        progress.setMax(Math.toIntExact(time));
         startCountdown(time);
     }
     public void startCountdown(Long time){
@@ -511,6 +517,7 @@ public class game extends AppCompatActivity {
                 long sec = (millisUntilFinished / 1000) % 60;
                 msUntilFinished = millisUntilFinished;
                 remainingTime.setText(f.format(min) + ":" + f.format(sec));
+                progress.setProgress(Math.toIntExact(msUntilFinished));
             }
             public void onFinish() {
                 remainingTime.setText("00:00");
@@ -531,8 +538,7 @@ public class game extends AppCompatActivity {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
-            public void run()
-            {
+            public void run() {
                 int minutes = (seconds % 3600) / 60;
                 int secs = seconds % 60;
 
