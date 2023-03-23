@@ -53,6 +53,7 @@
         app:layout_constraintEnd_toStartOf="@+id/hardCard05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hardCard01"
+        app:layout_constraintVertical_bias="0.476"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
@@ -60,7 +61,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="-10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/hardCard08"
@@ -81,6 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/hardCard05"
         app:layout_constraintTop_toBottomOf="@+id/hardCard03"
+        app:layout_constraintVertical_bias="0.478"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
@@ -95,6 +97,7 @@
         app:layout_constraintEnd_toStartOf="@+id/hardCard08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hardCard04"
+        app:layout_constraintVertical_bias="0.458"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
@@ -102,7 +105,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="-15dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,6 +126,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/hardCard08"
         app:layout_constraintTop_toBottomOf="@+id/hardCard06"
+        app:layout_constraintVertical_bias="0.456"
         app:srcCompat="@drawable/blank_tile1" />
 
     <ImageView
@@ -133,8 +137,10 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hardCard08"
+        app:layout_constraintVertical_bias="0.835"
         app:srcCompat="@drawable/blank_tile1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
