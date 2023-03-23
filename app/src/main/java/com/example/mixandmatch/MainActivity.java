@@ -15,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     DBHandler DB;
     public String mode = "TIME";
@@ -91,8 +93,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void displayToast(String message) {
-        Toast.makeText(getApplicationContext(), message,
-                Toast.LENGTH_SHORT).show();
+        if (Objects.equals(message, "+ Add User")){
+            Intent intent = new Intent(MainActivity.this, add_user.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getApplicationContext(), message,
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
