@@ -1,12 +1,14 @@
 package com.example.mixandmatch;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,9 @@ import java.util.Locale;
 public class leaderboard extends AppCompatActivity {
     DBHandler DB;
     public TextView Top10Usernames, Top10Scores, ResultsUsername, ResultsScore;
+
+    String share_results;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,9 @@ public class leaderboard extends AppCompatActivity {
         }
         Top10Usernames.setText(usernames);
         Top10Scores.setText(scores);
+
+        share_results = usernames + ":" + scores + "Type: " + difficulty;
+
     }
 
     private String ConvertSeconds(String secondString){
@@ -74,4 +82,16 @@ public class leaderboard extends AppCompatActivity {
     public void backToMenu(View view) {homeIntent();}
     private void homeIntent() {startActivity(new Intent(leaderboard.this, MainActivity.class));}
 
+    public void shareResults(View view) {
+
+        String txt = share_results.toString();
+        String mimeType = "text/plain";
+
+        ShareCompat.IntentBuilder
+                .from(this)
+                .setType(mimeType)
+                .setChooserTitle("Share your Results")
+                .setText(txt)
+                .startChooser();
+    }
 }

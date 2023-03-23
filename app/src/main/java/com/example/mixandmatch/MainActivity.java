@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     DBHandler DB;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
         String spinnerLabel = parent.getItemAtPosition(position).toString();
         if (spinnerLabel.equals("+ Add User")){
             Intent intent = new Intent(MainActivity.this, add_user.class);

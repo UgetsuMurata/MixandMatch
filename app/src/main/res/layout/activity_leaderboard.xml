@@ -127,6 +127,7 @@
         android:paddingEnd="10dp"
         android:text="@string/share_results"
         android:textSize="15sp"
+        android:onClick="shareResults"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/results_bg"
