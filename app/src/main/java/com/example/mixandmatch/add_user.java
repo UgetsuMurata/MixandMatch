@@ -30,4 +30,11 @@ public class add_user extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void closed(View view) {
+
+        Intent intent = new Intent(add_user.this, MainActivity.class);
+        startActivity(intent);
+
+    }
 }

@@ -161,7 +161,7 @@
                 android:text="@string/submit_concern"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
 
 
         </LinearLayout>
