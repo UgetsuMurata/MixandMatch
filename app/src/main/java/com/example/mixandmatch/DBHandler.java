@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +52,6 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", username);
         long result = db.insert(USER, null, contentValues);
-        Cursor cursor = db.rawQuery("INSERT INTO "+USER+"(username, logged_in) VALUES('"+username+"', 0);", null);
-        cursor.close();
         if (result == -1) return false; else {
             changeUser(username);
             return true;
@@ -67,6 +66,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 usernames.add(cursor.getString(0));
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return usernames;
     }
 
@@ -98,46 +98,32 @@ public class DBHandler extends SQLiteOpenHelper {
     abstract static class SCORES{
         public abstract void insertScore(String username, String difficulty, int score);
         public abstract ArrayList<ArrayList<String>> getTop10(String difficulty);
+        public abstract Integer userScore(String user, String difficulty);
     }
     //TIME DATABASE FUNCTIONS
     class timeLB extends SCORES{
         @Override
         public void insertScore(String username, String difficulty, int score) {
-            /*
-              inserts time-based leaderboard
-              difficulty
-              @param difficulty:
-             *              - easy
-             *              - moderate
-             *              - difficult
-             *              - extreme
-             */
-
             //check if username already in leaderboard
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
             Cursor cursor = db.rawQuery("SELECT username FROM "+TIME+" WHERE username='"+username+"';", null);
             if ((cursor != null) && (cursor.getCount() > 0)){
                 //if in leaderboard, update score
-                db.rawQuery("UPDATE "+TIME+" SET score_"+difficulty+"="+score+" WHERE username='"+username+"'';", null);
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("score_"+difficulty, score);
+                db.update(TIME, contentValues, "username=?", new String[]{username});
             }else{
                 //if not in leaderboard, insert score
-                db.rawQuery("INSERT INTO "+TIME+"(username, score_"+difficulty+") VALUES('"+username+"', "+score+");", null);
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("username", username);
+                contentValues.put("score_"+difficulty, score);
+                db.insert(TIME, null, contentValues);
             }
         }
         @Override
         public ArrayList<ArrayList<String>> getTop10(String difficulty) {
-            /*
-              gets top 10 of time-based leaderboard
-              difficulty
-              values:
-              - easy
-              - moderate
-              - difficult
-              - extreme
-              */
-            //retrieve difficulty data and username
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT username, score_"+difficulty+" FROM "+TIME+" WHERE difficulty=score_"+difficulty+" SORT BY score_"+difficulty+" LIMIT 10;", null);
+            Cursor cursor = db.rawQuery("SELECT username, score_"+difficulty+" FROM "+TIME+" WHERE score_"+difficulty+" IS NOT NULL ORDER BY score_"+difficulty+" LIMIT 10;", null);
             //return only 10 data
             ArrayList<ArrayList<String>> arrayList = new ArrayList<>();
             ArrayList<String> arrayListContents = new ArrayList<>();
@@ -149,44 +135,35 @@ public class DBHandler extends SQLiteOpenHelper {
             }
             return arrayList;
         }
+
+        @Override
+        public Integer userScore(String user, String difficulty) {
+            SQLiteDatabase db = DBHandler.this.getWritableDatabase();
+            Cursor cursor = db.rawQuery("SELECT score_"+difficulty+" FROM "+SCORE+" WHERE username='"+user+"';", null);
+            return cursor.getInt(0);
+        }
     }
     //SCORE DATABASE FUNCTIONS
     class scoreLB extends SCORES{
         @Override
         public void insertScore(String username, String difficulty, int score) {
-            /*
-              inserts score-based leaderboard
-              difficulty
-              @param difficulty:
-             *              - easy
-             *              - moderate
-             *              - difficult
-             *              - extreme
-             */
-
-            //check if username already in leaderboard
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
             Cursor cursor = db.rawQuery("SELECT username FROM "+SCORE+" WHERE username='"+username+"';", null);
             if ((cursor != null) && (cursor.getCount() > 0)){
                 //if in leaderboard, update score
-                db.rawQuery("UPDATE "+SCORE+" SET score_"+difficulty+"="+score+" WHERE username='"+username+"';", null);
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("score_"+difficulty, score);
+                db.update(SCORE, contentValues, "username=?", new String[]{username});
             }else{
                 //if not in leaderboard, insert score
-                db.rawQuery("INSERT INTO "+SCORE+"(username, score_"+difficulty+") VALUES('"+username+"', "+score+");", null);
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("username", username);
+                contentValues.put("score_"+difficulty, score);
+                db.insert(SCORE, null, contentValues);
             }
         }
         @Override
         public ArrayList<ArrayList<String>> getTop10(String difficulty) {
-            /*
-              gets top 10 of score-based leaderboard
-              difficulty
-              values:
-              - easy
-              - moderate
-              - difficult
-              - extreme
-              */
-            //retrieve difficulty data and username
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
             Cursor cursor = db.rawQuery("SELECT username, score_"+difficulty+" FROM "+SCORE+" WHERE score_"+difficulty+" IS NOT NULL ORDER BY score_"+difficulty+" LIMIT 10;", null);
             //return only 10 data
@@ -199,6 +176,13 @@ public class DBHandler extends SQLiteOpenHelper {
                 arrayListContents.clear();
             }
             return arrayList;
+        }
+
+        @Override
+        public Integer userScore(String user, String difficulty) {
+            SQLiteDatabase db = DBHandler.this.getWritableDatabase();
+            Cursor cursor = db.rawQuery("SELECT score_"+difficulty+" FROM "+SCORE+" WHERE username='"+user+"';", null);
+            return cursor.getInt(0);
         }
     }
 

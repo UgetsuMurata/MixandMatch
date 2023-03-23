@@ -5,11 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -33,12 +38,14 @@ public class game extends AppCompatActivity {
     public List<Integer> OPENED_CARDS;
     public ImageView previousCard;
     public Integer SCORE;
-    public TextView scoreDisplay;
-    ImageView currentImageId;
-    ImageView previousImageId;
-    int currentValue;
-    int previousValue;
-
+    public TextView scoreDisplay, remainingTime;
+    public CountDownTimer timer;
+    public Long msUntilFinished;
+    private boolean timerRunning;
+    private int seconds = 0;
+    private boolean running;
+    private boolean wasRunning;
+    private boolean isStopwatch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +79,15 @@ public class game extends AppCompatActivity {
             CARDS.put(11, 0);
             CARDS.put(12, 0);
             scoreDisplay = HEADER.findViewById(R.id.score_view);
+            remainingTime = HEADER.findViewById(R.id.remaining_time);
+            isStopwatch = false;
+            configureCountdown(); //run timer
+            timerRunning = true;
+        } else {
+            remainingTime = HEADER.findViewById(R.id.stopwatch);
+            isStopwatch = true;
+            runStop(); //run stopwatch
+            startStopwatch(); //start stopwatch
         }
     }
 
@@ -398,20 +414,34 @@ public class game extends AppCompatActivity {
     }
 
     private void finishGame(){
+        if (MODE.equals("SCORE")) {
+            Integer remainingTimeBonus = Math.toIntExact(msUntilFinished / 1000)*5;
+            SCORE = SCORE + remainingTimeBonus;
+            pauseCountdown();
+            timerRunning = false;
+        } else {
+            doneStopwatch();
+            SCORE = seconds;
+        }
         //finish game - store results to database
         Intent intent = new Intent(game.this, leaderboard.class);
-        if (!USERNAME.equals("GUEST")) { //if using an account, add to database
+        if (!USERNAME.equals("Guest")) { //if using an account, add to database
             if (MODE.equals("TIME")) {
                 DBHandler.timeLB time = DB.new timeLB();
-                time.insertScore(USERNAME, DIFFICULTY.toLowerCase(), SCORE);
-                intent.putExtra("DATABASE", "TIME");
+                if (time.userScore(USERNAME, DIFFICULTY.toLowerCase())<SCORE){
+                    time.insertScore(USERNAME, DIFFICULTY.toLowerCase(), SCORE);
+                }
             } else {
                 DBHandler.scoreLB score = DB.new scoreLB();
-                score.insertScore(USERNAME, DIFFICULTY.toLowerCase(), SCORE);
-                intent.putExtra("DATABASE", "SCORE");
+                if (score.userScore(USERNAME, DIFFICULTY.toLowerCase())<SCORE){
+                    score.insertScore(USERNAME, DIFFICULTY.toLowerCase(), SCORE);
+                    Boolean timer_done = msUntilFinished == 0;
+                    intent.putExtra("TIMER_DONE", timer_done);
+                }
             }
         }
         //send intents
+        intent.putExtra("DATABASE", MODE);
         intent.putExtra("SCORE", String.valueOf(SCORE));
         intent.putExtra("USERNAME", USERNAME);
         intent.putExtra("DIFFICULTY", DIFFICULTY);
@@ -437,5 +467,80 @@ public class game extends AppCompatActivity {
         Collections.shuffle(intList);
         intList.toArray(cards);
         return intList;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (isStopwatch) {
+            wasRunning = running;
+            running = false;
+        } else {
+            if (timerRunning) pauseCountdown();
+        }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (isStopwatch) {
+            if (wasRunning) {
+                running = true;
+            }
+        } else {
+            if (msUntilFinished!=null) continueCountdown();
+        }
+    }
+
+    //COUNTDOWN TIMER
+    public void configureCountdown(){
+        Long time;
+        switch (DIFFICULTY){
+            case "MODERATE": time = (30*1000L*2);
+            case "HARD": time = (30*1000L*3);
+            case "EXTREME": time = (30*1000L*4);
+            default:time = (30*1000L);
+        }
+        startCountdown(time);
+    }
+    public void startCountdown(Long time){
+        Log.d("TIMER INSIDE startCountDown", String.valueOf(time));
+        timer = new CountDownTimer(time, 1000) {
+            public void onTick(long millisUntilFinished) {
+                NumberFormat f = new DecimalFormat("00");
+                long min = (millisUntilFinished / 60000) % 60;
+                long sec = (millisUntilFinished / 1000) % 60;
+                msUntilFinished = millisUntilFinished;
+                remainingTime.setText(f.format(min) + ":" + f.format(sec));
+            }
+            public void onFinish() {
+                remainingTime.setText("00:00");
+                finishGame();
+            }
+        };
+        timer.start();
+    }
+    public void pauseCountdown(){timer.cancel();}
+    public void continueCountdown(){startCountdown(msUntilFinished);}
+
+    //STOPWATCH TIMER
+    public void startStopwatch(){
+        running = true;
+        seconds = 0;}
+    public void doneStopwatch(){running = false;}
+    private void runStop(){
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run()
+            {
+                int minutes = (seconds % 3600) / 60;
+                int secs = seconds % 60;
+
+                String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, secs);
+                remainingTime.setText(time);
+                if (running) seconds++;
+                handler.postDelayed(this, 1000);
+            }
+        });
     }
 }
