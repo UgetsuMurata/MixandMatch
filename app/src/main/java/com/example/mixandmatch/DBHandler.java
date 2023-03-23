@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -66,14 +67,14 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("UPDATE "+USER+" SET logged_in=0 WHERE logged_in=1;", null);
         cursor.close();
-        cursor = db.rawQuery("UPDATE "+USER+" SET logged_in=1 WHERE username="+username+";", null);
+        cursor = db.rawQuery("UPDATE "+USER+" SET logged_in=1 WHERE username='"+username+"';", null);
         cursor.close();
     }
     public void deleteUser(String username){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("DELETE FROM "+USER+" WHERE username="+username+";", null);
+        Cursor cursor = db.rawQuery("DELETE FROM "+USER+" WHERE username='"+username+"';", null);
         cursor.close();
-        cursor = db.rawQuery("DELETE FROM "+TIME+" WHERE username="+username+";", null);
+        cursor = db.rawQuery("DELETE FROM "+TIME+" WHERE username='"+username+"';", null);
         cursor.close();
         cursor = db.rawQuery("DELETE FROM "+SCORE+" WHERE username="+username+";", null);
         cursor.close();
