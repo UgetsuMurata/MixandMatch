@@ -60,7 +60,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
     public List<String> getAllUser(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT username FROM "+USER+" ORDER BY ROWID;", null);
+        Cursor cursor = db.rawQuery("SELECT username FROM "+USER+" ORDER BY ROWID DESC;", null);
         List<String> usernames = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
