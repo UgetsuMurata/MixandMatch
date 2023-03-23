@@ -2,22 +2,16 @@ package com.example.mixandmatch;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,8 +22,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public static String USERNAME = "Guest";
     public String imageCategory = "CANDY";
 
+    String current_user;
     List<String> labels;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +33,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         Spinner spinner = findViewById(R.id.spinner_label);
 
+
         spinner.setOnItemSelectedListener(this);
 
         labels = DB.getAllUser();
         labels.add("Guest");
         labels.add("+ Add User");
 
-
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, labels);
 
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(arrayAdapter);
-
     }
 
     public void onClickShowAlert(View view) {
@@ -63,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(getApplicationContext(), "Pressed OK", Toast.LENGTH_SHORT).show();
+
+                DB.deleteUser(current_user);
             }
         });
         myAlertBuilder.setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
@@ -79,19 +74,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(intent);
     }
 
-    public void click_delete(View view) {
-    }
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         String spinnerLabel = parent.getItemAtPosition(position).toString();
         displayToast(spinnerLabel);
+        current_user = spinnerLabel;
 
     }
 
     private void displayToast(String message) {
+
         if (Objects.equals(message, "+ Add User")){
+
             Intent intent = new Intent(MainActivity.this, add_user.class);
             startActivity(intent);
         }else{

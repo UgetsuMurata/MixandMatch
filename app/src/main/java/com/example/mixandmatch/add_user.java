@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
 
 public class add_user extends AppCompatActivity {
 
@@ -20,6 +20,7 @@ public class add_user extends AppCompatActivity {
         setContentView(R.layout.activity_add_user);
         DB = new DBHandler(this);
         myUsername = findViewById(R.id.user_name);
+
     }
 
     public void submitButton(View view) {
@@ -32,7 +33,6 @@ public class add_user extends AppCompatActivity {
     }
 
     public void closed(View view) {
-
         Intent intent = new Intent(add_user.this, MainActivity.class);
         startActivity(intent);
 
