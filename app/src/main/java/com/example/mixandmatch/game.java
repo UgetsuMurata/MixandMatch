@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class game extends AppCompatActivity {
@@ -42,6 +43,8 @@ public class game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        DB = new DBHandler(this);
 
         Intent intent = getIntent();
         DIFFICULTY = intent.getStringExtra("DIFFICULTY");
@@ -397,15 +400,16 @@ public class game extends AppCompatActivity {
     private void finishGame(){
         //finish game - store results to database
         Intent intent = new Intent(game.this, leaderboard.class);
-
-        if (MODE.equals("TIME")){
-            DBHandler.timeLB time = DB.new timeLB();
-            time.insertScore(USERNAME, DIFFICULTY, SCORE);
-            intent.putExtra("DATABASE", "TIME");
-        } else {
-            DBHandler.scoreLB score = DB.new scoreLB();
-            score.insertScore(USERNAME, DIFFICULTY, SCORE);
-            intent.putExtra("DATABASE", "SCORE");
+        if (!USERNAME.equals("GUEST")) { //if using an account, add to database
+            if (MODE.equals("TIME")) {
+                DBHandler.timeLB time = DB.new timeLB();
+                time.insertScore(USERNAME, DIFFICULTY.toLowerCase(), SCORE);
+                intent.putExtra("DATABASE", "TIME");
+            } else {
+                DBHandler.scoreLB score = DB.new scoreLB();
+                score.insertScore(USERNAME, DIFFICULTY.toLowerCase(), SCORE);
+                intent.putExtra("DATABASE", "SCORE");
+            }
         }
         //send intents
         intent.putExtra("SCORE", String.valueOf(SCORE));
@@ -415,8 +419,6 @@ public class game extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //randomize cards
-    //3x2 4x2 5x2 6x2
     private List<Integer> generateCardPlacement(){
         Integer[] cards = {1, 1, 2, 2};
         if (Objects.equals(DIFFICULTY, "EASY")){
@@ -436,26 +438,4 @@ public class game extends AppCompatActivity {
         intList.toArray(cards);
         return intList;
     }
-
-    private void storeTimeScore(Integer time_taken){
-        //DB.timeLB.insertScore(username, difficulty, time_taken);
-    }
-
-    private void addScore(Integer points){
-        // factors:
-        // how many times flipped for cards as a
-        // took how long since first flipped as b
-        // (b/10)*a = score added
-        // Store in dictionary which cards are flipped.
-
-    }
-    public void cardFlipped(View view){
-        switch (view.getId()){
-            //case R.id.card1:
-                //add 1 to dictionary value
-            //    break;
-        }
-    }
-
-
 }
