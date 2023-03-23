@@ -1,5 +1,6 @@
 package com.example.mixandmatch;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -205,16 +206,16 @@ public class game extends AppCompatActivity {
                         //detect if all cards are open
                         switch (DIFFICULTY){
                             case "MODERATE":
-                                if (OPENED_CARDS.size() == 6) finishGame();//call finish game
-                                break;
-                            case "HARD":
                                 if (OPENED_CARDS.size() == 8) finishGame();//call finish game
                                 break;
-                            case "EXTREME":
+                            case "HARD":
                                 if (OPENED_CARDS.size() == 10) finishGame();//call finish game
                                 break;
-                            default:
+                            case "EXTREME":
                                 if (OPENED_CARDS.size() == 12) finishGame();//call finish game
+                                break;
+                            default:
+                                if (OPENED_CARDS.size() == 6) finishGame();//call finish game
                                 break;
                         }
                     } else {
@@ -400,14 +401,16 @@ public class game extends AppCompatActivity {
         if (MODE.equals("TIME")){
             DBHandler.timeLB time = DB.new timeLB();
             time.insertScore(USERNAME, DIFFICULTY, SCORE);
-            //intent.putExtra("DATABASE");
+            intent.putExtra("DATABASE", "TIME");
         } else {
             DBHandler.scoreLB score = DB.new scoreLB();
             score.insertScore(USERNAME, DIFFICULTY, SCORE);
+            intent.putExtra("DATABASE", "SCORE");
         }
         //send intents
-        intent.putExtra("SCORE", SCORE);
+        intent.putExtra("SCORE", String.valueOf(SCORE));
         intent.putExtra("USERNAME", USERNAME);
+        intent.putExtra("DIFFICULTY", DIFFICULTY);
         setResult(RESULT_OK, intent);
         startActivity(intent);
     }

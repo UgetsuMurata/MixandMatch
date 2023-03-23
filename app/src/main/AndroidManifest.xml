@@ -17,10 +17,6 @@
             android:name=".add_user"
             android:exported="true" />
         <activity
-            android:name=".PopUpWindow"
-            android:exported="false"
-            android:theme="@style/AppTheme.popMe" />
-        <activity
             android:name=".time_based_view"
             android:exported="true" />
         <activity

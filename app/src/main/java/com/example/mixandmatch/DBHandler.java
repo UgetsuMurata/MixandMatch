@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBHandler extends SQLiteOpenHelper {
     /**
@@ -51,11 +52,25 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", username);
         long result = db.insert(USER, null, contentValues);
-        if (result == -1)return false;else {
+        Cursor cursor = db.rawQuery("INSERT INTO "+USER+"(username, logged_in) VALUES('"+username+"', 0);", null);
+        cursor.close();
+        if (result == -1) return false; else {
             changeUser(username);
             return true;
         }
     }
+    public List<String> getAllUser(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT username FROM "+USER+";", null);
+        List<String> usernames = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                usernames.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        return usernames;
+    }
+
     public String getLoggedIn(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT username FROM "+USER+" WHERE logged_in=1;", null);
@@ -76,7 +91,7 @@ public class DBHandler extends SQLiteOpenHelper {
         cursor.close();
         cursor = db.rawQuery("DELETE FROM "+TIME+" WHERE username='"+username+"';", null);
         cursor.close();
-        cursor = db.rawQuery("DELETE FROM "+SCORE+" WHERE username="+username+";", null);
+        cursor = db.rawQuery("DELETE FROM "+SCORE+" WHERE username='"+username+"';", null);
         cursor.close();
     }
 
@@ -101,13 +116,13 @@ public class DBHandler extends SQLiteOpenHelper {
 
             //check if username already in leaderboard
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT username FROM "+TIME+"WHERE username="+username+";", null);
+            Cursor cursor = db.rawQuery("SELECT username FROM "+TIME+"WHERE username='"+username+"';", null);
             if ((cursor != null) && (cursor.getCount() > 0)){
                 //if in leaderboard, update score
-                db.rawQuery("UPDATE "+TIME+" SET score_"+difficulty+"="+score+" WHERE username="+username+";", null);
+                db.rawQuery("UPDATE "+TIME+" SET score_"+difficulty+"="+score+" WHERE username='"+username+"'';", null);
             }else{
                 //if not in leaderboard, insert score
-                db.rawQuery("INSERT INTO "+TIME+"(username, score_"+difficulty+") VALUES("+username+", "+score+");", null);
+                db.rawQuery("INSERT INTO "+TIME+"(username, score_"+difficulty+") VALUES('"+username+"', "+score+");", null);
             }
         }
         @Override
@@ -149,13 +164,13 @@ public class DBHandler extends SQLiteOpenHelper {
 
             //check if username already in leaderboard
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT username FROM "+SCORE+"WHERE username="+username+";", null);
+            Cursor cursor = db.rawQuery("SELECT username FROM "+SCORE+"WHERE username='"+username+"';", null);
             if ((cursor != null) && (cursor.getCount() > 0)){
                 //if in leaderboard, update score
-                db.rawQuery("UPDATE "+SCORE+" SET score_"+difficulty+"="+score+" WHERE username="+username+";", null);
+                db.rawQuery("UPDATE "+SCORE+" SET score_"+difficulty+"="+score+" WHERE username='"+username+"';", null);
             }else{
                 //if not in leaderboard, insert score
-                db.rawQuery("INSERT INTO "+SCORE+"(username, score_"+difficulty+") VALUES("+username+", "+score+");", null);
+                db.rawQuery("INSERT INTO "+SCORE+"(username, score_"+difficulty+") VALUES('"+username+"', "+score+");", null);
             }
         }
         @Override

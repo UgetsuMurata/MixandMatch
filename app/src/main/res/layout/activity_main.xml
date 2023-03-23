@@ -136,7 +136,8 @@
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:onClick="changeImageCategory"
-                app:srcCompat="@drawable/one_one" />
+                app:srcCompat="@drawable/one_one"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageView
                 android:id="@+id/imageCategoryCubes"
@@ -148,7 +149,8 @@
                 android:cropToPadding="true"
                 android:onClick="changeImageCategory"
                 android:textAlignment="center"
-                app:srcCompat="@drawable/two_one" />
+                app:srcCompat="@drawable/two_one"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageView
                 android:id="@+id/imageCategoryDonut"
@@ -159,7 +161,8 @@
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:onClick="changeImageCategory"
-                app:srcCompat="@drawable/three_one" />
+                app:srcCompat="@drawable/three_one"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageView
                 android:id="@+id/imageCategoryCookie"
@@ -305,11 +308,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/beans"
+            android:onClick="modeChoose"
             android:text="@string/score_based"
             android:textAlignment="center"
             android:textColor="#0f0f0f"
             android:textSize="20sp"
-            android:onClick="modeChoose"/>
+            tools:ignore="TouchTargetSizeCheck" />
     </RadioGroup>
 
     <TextView

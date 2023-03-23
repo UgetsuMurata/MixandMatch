@@ -65,19 +65,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         myAlertBuilder.show();
     }
 
-
-    private void openPopUpWindow() {
-        Intent PopUpWindow = new Intent(MainActivity.this, PopupWindow.class);
-        startActivity(PopUpWindow);
-    }
-
     public void click_info(View view) {
         Intent intent = new Intent(this, information.class);
-        startActivity(intent);
-    }
-
-    public void click_leaderboard(View view) {
-        Intent intent = new Intent(this, leaderboard.class);
         startActivity(intent);
     }
 
