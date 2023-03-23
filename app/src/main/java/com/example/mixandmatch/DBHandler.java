@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +60,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
     public List<String> getAllUser(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT username FROM "+USER+";", null);
+        Cursor cursor = db.rawQuery("SELECT username FROM "+USER+" ORDER BY ROWID;", null);
         List<String> usernames = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
@@ -98,7 +97,7 @@ public class DBHandler extends SQLiteOpenHelper {
     //ABSTRACT CLASS FOR TIME AND SCORE
     abstract static class SCORES{
         public abstract void insertScore(String username, String difficulty, int score);
-        public abstract ArrayList<String> getTop10(String difficulty);
+        public abstract ArrayList<ArrayList<String>> getTop10(String difficulty);
     }
     //TIME DATABASE FUNCTIONS
     class timeLB extends SCORES{
@@ -116,7 +115,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
             //check if username already in leaderboard
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT username FROM "+TIME+"WHERE username='"+username+"';", null);
+            Cursor cursor = db.rawQuery("SELECT username FROM "+TIME+" WHERE username='"+username+"';", null);
             if ((cursor != null) && (cursor.getCount() > 0)){
                 //if in leaderboard, update score
                 db.rawQuery("UPDATE "+TIME+" SET score_"+difficulty+"="+score+" WHERE username='"+username+"'';", null);
@@ -126,7 +125,7 @@ public class DBHandler extends SQLiteOpenHelper {
             }
         }
         @Override
-        public ArrayList<String> getTop10(String difficulty) {
+        public ArrayList<ArrayList<String>> getTop10(String difficulty) {
             /*
               gets top 10 of time-based leaderboard
               difficulty
@@ -138,12 +137,15 @@ public class DBHandler extends SQLiteOpenHelper {
               */
             //retrieve difficulty data and username
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT username, score_"+difficulty+" FROM "+TIME+"WHERE difficulty=score_"+difficulty+" SORT BY score_"+difficulty+" LIMIT 10;", null);
+            Cursor cursor = db.rawQuery("SELECT username, score_"+difficulty+" FROM "+TIME+" WHERE difficulty=score_"+difficulty+" SORT BY score_"+difficulty+" LIMIT 10;", null);
             //return only 10 data
-            ArrayList<String> arrayList = new ArrayList<>();
-            int columnIndex = cursor.getColumnIndex("username");
+            ArrayList<ArrayList<String>> arrayList = new ArrayList<>();
+            ArrayList<String> arrayListContents = new ArrayList<>();
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-                arrayList.add(cursor.getString(columnIndex));
+                arrayListContents.add(cursor.getString(0));
+                arrayListContents.add(cursor.getString(1));
+                arrayList.add((ArrayList<String>) arrayListContents.clone());
+                arrayListContents.clear();
             }
             return arrayList;
         }
@@ -164,7 +166,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
             //check if username already in leaderboard
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT username FROM "+SCORE+"WHERE username='"+username+"';", null);
+            Cursor cursor = db.rawQuery("SELECT username FROM "+SCORE+" WHERE username='"+username+"';", null);
             if ((cursor != null) && (cursor.getCount() > 0)){
                 //if in leaderboard, update score
                 db.rawQuery("UPDATE "+SCORE+" SET score_"+difficulty+"="+score+" WHERE username='"+username+"';", null);
@@ -174,7 +176,7 @@ public class DBHandler extends SQLiteOpenHelper {
             }
         }
         @Override
-        public ArrayList<String> getTop10(String difficulty) {
+        public ArrayList<ArrayList<String>> getTop10(String difficulty) {
             /*
               gets top 10 of score-based leaderboard
               difficulty
@@ -186,12 +188,15 @@ public class DBHandler extends SQLiteOpenHelper {
               */
             //retrieve difficulty data and username
             SQLiteDatabase db = DBHandler.this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT username, score_"+difficulty+" FROM "+SCORE+"WHERE difficulty=score_"+difficulty+" SORT BY score_"+difficulty+" LIMIT 10;", null);
+            Cursor cursor = db.rawQuery("SELECT username, score_"+difficulty+" FROM "+SCORE+" WHERE score_"+difficulty+" IS NOT NULL ORDER BY score_"+difficulty+" LIMIT 10;", null);
             //return only 10 data
-            ArrayList<String> arrayList = new ArrayList<>();
-            int columnIndex = cursor.getColumnIndex("username");
+            ArrayList<ArrayList<String>> arrayList = new ArrayList<>();
+            ArrayList<String> arrayListContents = new ArrayList<>();
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-                arrayList.add(cursor.getString(columnIndex));
+                arrayListContents.add(cursor.getString(0));
+                arrayListContents.add(cursor.getString(1));
+                arrayList.add((ArrayList<String>) arrayListContents.clone());
+                arrayListContents.clear();
             }
             return arrayList;
         }
