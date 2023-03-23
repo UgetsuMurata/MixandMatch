@@ -54,10 +54,4 @@
     <string name="submit_concern">Submit</string>
     <string name="submit_button">Submit</string>
 
-    <string-array name="labels_array">
-        <item>Guest</item>
-        <item>+ Add User</item>
-    </string-array>
-
-
 </resources>

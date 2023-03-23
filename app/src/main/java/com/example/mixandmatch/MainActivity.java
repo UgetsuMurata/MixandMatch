@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -24,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public static String USERNAME = "Guest";
     public String imageCategory = "CANDY";
 
+    List<String> labels;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,18 +38,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         DB = new DBHandler(this);
 
         Spinner spinner = findViewById(R.id.spinner_label);
-        if (spinner != null){
-                spinner.setOnItemSelectedListener(this);
-        }
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.labels_array, android.R.layout.simple_spinner_item);
+        spinner.setOnItemSelectedListener(this);
 
-        adapter.setDropDownViewResource(
+        labels = DB.getAllUser();
+        labels.add("Guest");
+        labels.add("+ Add User");
+
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, labels);
+
+        arrayAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
-        if (spinner != null){
-            spinner.setAdapter(adapter);
-        }
+
+        spinner.setAdapter(arrayAdapter);
+
     }
 
     public void onClickShowAlert(View view) {
