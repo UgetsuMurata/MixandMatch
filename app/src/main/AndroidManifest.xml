@@ -39,7 +39,7 @@
             android:exported="true"
             android:label="settings"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="nosensor" >
+            android:screenOrientation="nosensor"  >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mixandmatch.MainActivity" />
