@@ -53,7 +53,7 @@ public class leaderboard extends AppCompatActivity {
         }
 
         for (int i = 0; i < top10.size(); i++){
-            usernames = (i+1) + "." + usernames + top10.get(i).get(0) + "\n";
+            usernames = usernames + (i+1) + "." + top10.get(i).get(0) + "\n";
             if (mode.equals("SCORE")) scores = scores + top10.get(i).get(1) + "\n";
             else scores = scores + ConvertSeconds(top10.get(i).get(1)) + "\n";
         }

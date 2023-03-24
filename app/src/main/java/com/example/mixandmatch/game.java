@@ -38,7 +38,7 @@ public class game extends AppCompatActivity {
     public Integer OPENED_CARD;
     public List<Integer> CARD_PLACEMENT;
     public List<Integer> OPENED_CARDS;
-    public ImageView previousCard;
+    public List<ImageView> previousCard;
     public Integer SCORE;
     public TextView scoreDisplay, remainingTime;
     public CountDownTimer timer;
@@ -48,6 +48,7 @@ public class game extends AppCompatActivity {
     private boolean running;
     private boolean wasRunning;
     private boolean isStopwatch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +64,7 @@ public class game extends AppCompatActivity {
         OPENED_CARD = -1;
         OPENED_CARDS = new ArrayList<>();
         SCORE = 0;
-        previousCard = null;
+        previousCard = new ArrayList<>();
         CARD_PLACEMENT = generateCardPlacement();
         configureScreen();
         if (MODE.equals("SCORE")){
@@ -205,7 +206,7 @@ public class game extends AppCompatActivity {
                 if (OPENED_CARD.equals(idNum) || OPENED_CARDS.contains(idNum)) return;
                 if (OPENED_CARD == -1) {
                     OPENED_CARD = idNum;
-                    previousCard = img;
+                    previousCard.add(img);
                 } else {
                     if (CARD_PLACEMENT.get(idNum-1).equals(CARD_PLACEMENT.get(OPENED_CARD-1))){
                         if (MODE.equals("SCORE")){
@@ -225,6 +226,16 @@ public class game extends AppCompatActivity {
                         } //do nothing specific if time-based
                         OPENED_CARDS.add(OPENED_CARD);
                         OPENED_CARDS.add(idNum);
+
+                        for (int i=0; i < previousCard.size(); i++) {
+                            String previousStringID = stringID(previousCard.get(i));
+                            Integer previousIdNum = Integer.parseInt(previousStringID.substring(previousStringID.length()-2));
+                            if (Objects.equals(OPENED_CARD, previousIdNum) || Objects.equals(idNum, previousIdNum))
+                                previousCard.remove(previousCard.get(i));
+                        }
+                        for (int i=0; i < previousCard.size(); i++)
+                            previousCard.get(i).setImageResource(R.drawable.blank_tile1);
+                        previousCard.clear();
                         //detect if all cards are open
                         switch (DIFFICULTY){
                             case "MODERATE":
@@ -245,7 +256,9 @@ public class game extends AppCompatActivity {
                         final Handler handler = new Handler();
                         handler.postDelayed((Runnable) () -> {
                             img.setImageResource(R.drawable.blank_tile1);
-                            previousCard.setImageResource(R.drawable.blank_tile1);
+                            for (int i=0; i < previousCard.size(); i++)
+                                previousCard.get(i).setImageResource(R.drawable.blank_tile1);
+                            previousCard.clear();
                         }, 500);
                         //if score-based, add 1 to opened cards
                         if (MODE.equals("SCORE") && CARDS.get(idNum) <= 7) {
@@ -258,6 +271,7 @@ public class game extends AppCompatActivity {
             }
         });
     }
+
     private int getImage(int imageNumber) {
         switch (CATEGORY) {
             case "CANDY":
@@ -431,18 +445,28 @@ public class game extends AppCompatActivity {
         if (!USERNAME.equals("Guest")) { //if using an account, add to database
             if (MODE.equals("TIME")) {
                 DBHandler.timeLB time = DB.new timeLB();
-                Log.d("DATABASE", SCORE+":"+time.userScore(USERNAME, DIFFICULTY.toLowerCase()));
-                if (time.userScore(USERNAME, DIFFICULTY.toLowerCase()) > SCORE){
+                Integer previousRecords = time.userScore(USERNAME, DIFFICULTY.toLowerCase());
+                if (previousRecords > SCORE || previousRecords==0){
                     time.insertScore(USERNAME, DIFFICULTY.toLowerCase(), SCORE);
                 }
             } else {
                 DBHandler.scoreLB score = DB.new scoreLB();
                 if (score.userScore(USERNAME, DIFFICULTY.toLowerCase()) < SCORE){
-                    Log.d("DATABASE", SCORE+":"+score.userScore(USERNAME, DIFFICULTY.toLowerCase()));
                     score.insertScore(USERNAME, DIFFICULTY.toLowerCase(), SCORE);
-                    Boolean timer_done = msUntilFinished == 0;
-                    intent.putExtra("TIMER_DONE", timer_done);
                 }
+                boolean timer_done;
+                switch (DIFFICULTY){
+                    case "MODERATE":
+                        timer_done = !(OPENED_CARDS.size() == 8);
+                    case "HARD":
+                        timer_done = !(OPENED_CARDS.size() == 10);
+                    case "EXTREME":
+                        timer_done = !(OPENED_CARDS.size() == 12);
+                    default:
+                        timer_done = !(OPENED_CARDS.size() == 6);
+                }
+                Log.d("TIME_DONE 0", String.valueOf(timer_done));
+                intent.putExtra("TIMER_DONE", timer_done);
             }
         }
         //send intents
